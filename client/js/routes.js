@@ -4,10 +4,18 @@ if (Meteor.isClient) {
     });
 
     Router.route('/scoreboard', function() {
-        this.render('login');
+        this.render('scoreboard');
     });
 
     Router.route('/bowlPicks', function() {
         this.render('bowlPicks');
+    });
+
+    Router.route('/adminAddBowls', function() {
+        this.render('adminAddBowls');
+    });
+
+    Router.route('/adminAddWinners', function() {
+        this.render('adminAddWinners');
     });
 }

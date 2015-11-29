@@ -10,3 +10,6 @@ insecure
 iron:router
 materialize:materialize
 accounts-password
+alanning:roles
+pcel:messenger
+fortawesome:fontawesome
