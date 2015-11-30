@@ -55,4 +55,61 @@ if (Meteor.isClient) {
             Router.go('/');
         }
     });
+
+    Template.admin.helpers({
+        bowls : function(){
+            console.log(Bowls.find().fetch())
+            return Bowls.find().fetch();
+        }
+    })
+
+    Template.admin.events({
+        'click #addBowl': function(){
+            var bowlName = $('#bowlName').val();
+            var team1 = $('#team1').val();
+            var team2 = $('#team2').val();
+            var bowlDate = $('#bowlDate').val();
+            var bowlGameEntry = {
+                'bowlName' : bowlName,
+                'team1' : team1,
+                'team2' : team2,
+                'bowlDate' : bowlDate
+            };
+
+            Meteor.call('addBowl', bowlGameEntry, function(error, result) {
+                console.log(result);
+                if (error) {
+                    console.log(error);
+                } else {
+                    $('input').val('');
+                    Meteor.myFunctions.newMessage("You added a bowl game!", 'success', 15);
+                }
+            });
+        },
+        'click .deleteBowl': function(e){
+            var bowlName = $(e.currentTarget).closest('.card').find('.bowl-name').text();
+            console.log(bowlName);
+            Meteor.call('deleteBowl',bowlName)
+        },
+        'click .team-pick' : function(e){
+            $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected')
+            $(e.currentTarget).addClass('selected');
+        }
+    })
+
+    
+
+    Template.bowlPicks.helpers({
+        bowls : function(){
+            console.log(Bowls.find().fetch())
+            return Bowls.find().fetch();
+        }
+    })
+
+    Template.bowlPicks.events({
+        'click .team-pick' : function(e){
+            $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected')
+            $(e.currentTarget).addClass('selected');
+        }
+    })
 }

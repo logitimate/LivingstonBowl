@@ -1,0 +1,65 @@
+<template name="admin">
+    {{>nav}}
+    <div class="row">
+        <div class="input-field col l3">
+            <input id="bowlName" type="text" class="validate">
+            <label for="bowlName">Bowl Name/Location</label>
+        </div>
+        <div class="input-field col l3">
+            <input id="team1" type="text" class="validate">
+            <label for="team1">Team 1</label>
+        </div>
+        <div class="input-field col l3">
+            <input id="team2" type="text" class="validate">
+            <label for="team2">Team 2</label>
+        </div>
+        <div class="input-field col l3">
+            <input id="bowlDate" type="text" class="validate">
+            <label for="bowlDate">Bowl Date</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col l12">
+            <a id="addBowl" class="waves-effect waves-red btn-large red lighten-2">Add Bowl</a>
+            <a id="submitWinners" class="waves-effect waves-red btn-large red lighten-2">Submit Winners</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col l12">
+            <h5 class="inline left"> Winners </h5>
+        </div>
+        {{#each bowls}}
+        <div class="col l4">
+            <div class="card card-small">
+                <div class="deleteBowl">
+                    <i class="fa fa-times"></i>
+                </div>
+                <div class="row red lighten-2 white-text">
+                    <div class="col l12">
+                        <h4 class="inline left bowl-name">{{bowl_name}}</h4>
+                        <p class="inline right">{{_date}}</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col l6 center">
+                            <div class="team-pick card">
+                                <div class="card-content">
+                                    <h5>{{team_1}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l6 center">
+                            <div class="team-pick card">
+                                <div class="card-content">
+                                    <h5>{{team_2}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</template>

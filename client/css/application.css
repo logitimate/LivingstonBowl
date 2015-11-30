@@ -6,3 +6,28 @@
 nav {
   padding: 0px 25px;
 }
+
+.team-pick{
+	cursor:pointer;
+	height:100%;
+	width:100%;
+}
+
+.selected{
+	background-color:#00e676;
+	color:#FFF;
+}
+
+.deleteBowl{
+	position: absolute;
+    right: -10px;
+    top: -10px;
+    background-color: #0A0A0A;
+    border-radius: 20px;
+    height: 25px;
+    color: #FFF;
+    width: 25px;
+    text-align: center;
+    padding: 2px;
+    cursor: pointer;
+}

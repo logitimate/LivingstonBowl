@@ -11,11 +11,7 @@ if (Meteor.isClient) {
         this.render('bowlPicks');
     });
 
-    Router.route('/adminAddBowls', function() {
-        this.render('adminAddBowls');
-    });
-
-    Router.route('/adminAddWinners', function() {
-        this.render('adminAddWinners');
+    Router.route('/admin', function() {
+        this.render('admin');
     });
 }

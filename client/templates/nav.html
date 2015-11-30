@@ -5,10 +5,9 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/scoreboard">Scoreboard</a></li>
                 {{#if currentUser}}
-	                <li><a href="/bowlPicks">Edit Your Picks</a></li>
+	                <li><a href="/bowlPicks">Make Picks</a></li>
 	                {{#if isInRole 'admin'}}
-                    	<li><a href="/adminAddBowls">Add Bowls</a></li>
-                        <li><a href="/adminAddWinners">Add Winners</a></li>
+                        <li><a href="/admin">Admin</a></li>
 	                {{/if}}
                 	<li><a href="#" class="logout">Logout</a></li>
                 {{/if}}

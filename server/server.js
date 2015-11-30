@@ -41,3 +41,19 @@
             });
         }
     });
+
+    if (Meteor.isServer) {
+        Meteor.methods({
+            addBowl: function(bowlEntry) {
+                Bowls.insert({
+                    bowl_name: bowlEntry.bowlName,
+                    team_1: bowlEntry.team1,
+                    team_2: bowlEntry.team2,
+                    _date: bowlEntry.bowlDate
+                })
+            },
+            deleteBowl: function(bowl_name){
+                Bowls.remove( { "bowl_name": bowl_name })
+            }
+        })
+    };

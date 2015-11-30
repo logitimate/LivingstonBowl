@@ -1,5 +1,40 @@
 <template name="bowlPicks">
     {{>nav}}
-    <h1>Pick Your Winners</h1>
-    <p> Click to pick winners</p>
+    <div class="row">
+        {{#each bowls}}
+        <div class="col l4">
+            <div class="card card-small">
+                <div class="row red lighten-2 white-text">
+                    <div class="col l12">
+                        <h4 class="inline left">{{bowl_name}}</h4>
+                        <p class="inline right">{{_date}}</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col l6 center">
+                            <div class="team-pick card">
+                                <div class="card-content">
+                                    <h5>{{team_1}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l6 center">
+                            <div class="team-pick card">
+                                <div class="card-content">
+                                    <h5>{{team_2}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="row fixed">
+        <div class="col l12">
+            <a id="submitPicks" class="waves-effect waves-red btn-large red lighten-2">Submit</a>
+        </div>
+    </div>
 </template>
