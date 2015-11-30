@@ -58,10 +58,18 @@ if (Meteor.isClient) {
 
     Template.admin.helpers({
         bowls : function(){
-            console.log(Bowls.find().fetch())
             return Bowls.find().fetch();
+        },
+        isWinner : function (params) {
+            var game = Bowls.findOne({'bowlName' : params.hash.name, 'season' : '' + params.hash.season});
+            if(game.winner === params.hash.team)
+                return 'selected';
+            else {
+                console.log('else');
+                return '';
+            }
         }
-    })
+    });
 
     Template.admin.events({
         'click #addBowl': function(){
@@ -69,15 +77,16 @@ if (Meteor.isClient) {
             var team1 = $('#team1').val();
             var team2 = $('#team2').val();
             var bowlDate = $('#bowlDate').val();
+            var season = $('#season').val();
             var bowlGameEntry = {
                 'bowlName' : bowlName,
                 'team1' : team1,
                 'team2' : team2,
-                'bowlDate' : bowlDate
+                'date' : bowlDate,
+                'season' : season
             };
 
             Meteor.call('addBowl', bowlGameEntry, function(error, result) {
-                console.log(result);
                 if (error) {
                     console.log(error);
                 } else {
@@ -87,29 +96,61 @@ if (Meteor.isClient) {
             });
         },
         'click .deleteBowl': function(e){
-            var bowlName = $(e.currentTarget).closest('.card').find('.bowl-name').text();
-            console.log(bowlName);
+            var bowlName = $(e.currentTarget).closest('.card').find('#name').text();
             Meteor.call('deleteBowl',bowlName)
         },
-        'click .team-pick' : function(e){
-            $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected')
+        'click .team-pick': function(e){
+            $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected');
             $(e.currentTarget).addClass('selected');
+        },
+        'click #submitWinners': function(e) {
+            $.each($('.card-container'), function(){
+                console.log($(this).data());
+               Meteor.call('addWinner', $(this).find('#name').text(), $(this).data('season'), $(this).find('.selected').find('.team').text());
+            });
         }
-    })
+    });
 
     
 
     Template.bowlPicks.helpers({
         bowls : function(){
-            console.log(Bowls.find().fetch())
             return Bowls.find().fetch();
+        },
+        isCorrect: function(params) {
+            var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
+
+            if(params.hash.winner === undefined)
+                return '';
+            if(pick.winner === params.hash.winner && pick.winner === params.hash.team)
+                return 'success';
+            else if (pick.winner != params.hash.winner && pick.winner === params.hash.team)
+                return 'fail';
+            else
+                return '';
         }
-    })
+    });
 
     Template.bowlPicks.events({
         'click .team-pick' : function(e){
-            $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected')
+            $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected');
             $(e.currentTarget).addClass('selected');
+        },
+        'click #submitPicks' : function(e) {
+            if ($('.card-container').find('.selected').length == 0) {
+                console.log('true');
+                Meteor.myFunctions.newMessage('You must select all the winners before submitting.', 'error', 10);
+                return false;
+            }
+
+            $.each($('.card-container'), function() {
+                Meteor.call('savePick', {
+                    'owner' : Meteor.userId()   ,
+                    'season' : $(this).data('season'),
+                    'name' : $(this).find('#name').text(),
+                    'winner' : $(this).find('.selected').find('#pickText').text()
+                })
+            });
         }
-    })
+    });
 }

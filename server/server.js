@@ -45,15 +45,19 @@
     if (Meteor.isServer) {
         Meteor.methods({
             addBowl: function(bowlEntry) {
-                Bowls.insert({
-                    bowl_name: bowlEntry.bowlName,
-                    team_1: bowlEntry.team1,
-                    team_2: bowlEntry.team2,
-                    _date: bowlEntry.bowlDate
-                })
+                Bowls.insert(bowlEntry)
             },
-            deleteBowl: function(bowl_name){
-                Bowls.remove( { "bowl_name": bowl_name })
+            deleteBowl: function(bowlName){
+                Bowls.remove( { "bowlName": bowlName })
+            },
+            addWinner: function(name, season, winner){
+                var bowl = Bowls.findOne({ 'bowlName' : name, 'season' : ''+ season });
+                console.log(bowl);
+                bowl['winner'] = winner;
+                Bowls.update({'bowlName':name, 'season': ''+ season}, bowl)
+            },
+            savePick: function(pick) {
+                Picks.insert(pick)
             }
         })
     };
