@@ -3,6 +3,11 @@ if (Meteor.isClient) {
          $('.modal-trigger').leanModal();
     };
 
+    Template.admin.rendered = function(){
+        $('select').material_select();
+    };
+
+
     Template.home.events({
         'click #signup': function(event) {
             event.preventDefault();

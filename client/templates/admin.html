@@ -1,6 +1,6 @@
 <template name="admin">
     {{>nav}}
-    <div class="row">
+    <div class="row white-text">
         <div class="input-field col l2">
             <input id="bowlName" type="text" class="validate">
             <label for="bowlName">Bowl Name/Location</label>
@@ -18,19 +18,25 @@
             <label for="bowlDate">Bowl Date</label>
         </div>
         <div class="input-field col l2">
-            <input id="season" type="text" class="validate">
+            <select>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+            </select>
             <label for="season">Season</label>
         </div>
     </div>
     <div class="row">
         <div class="col l12">
-            <a id="addBowl" class="waves-effect waves-red btn-large red lighten-2">Add Bowl</a>
-            <a id="submitWinners" class="waves-effect waves-red btn-large red lighten-2">Submit Winners</a>
+            <a id="addBowl" class="waves-effect waves-red btn-large btn-outline">Add Bowl</a>
+            <a id="submitWinners" class="waves-effect waves-red btn-large btn-outline">Submit Winners</a>
+            <a id="addSeason" class="waves-effect waves-red btn-large btn-outline">Add New Season</a>
         </div>
     </div>
     <div class="row">
         <div class="col l12">
-            <h5 class="inline left"> Winners </h5>
+            <h5 class="inline left white-text"> Winners </h5>
         </div>
         {{#each bowls}}
         <div class="col l4">
