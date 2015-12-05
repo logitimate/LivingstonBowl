@@ -1,38 +1,226 @@
 .action-button {
-  width: 100%;
-  position: absolute;
-  bottom: 15px;
+    width: 100%;
+    position: absolute;
+    bottom: 15px;
 }
+
 nav {
-  padding: 0px 25px;
+    padding: 0px 25px;
 }
+
 .team-pick {
-  cursor: pointer;
-  height: 100%;
-  width: 100%;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
 }
+
 .selected {
-  background-color: #00e676;
-  color: #FFF;
+    background-color: #00e676;
+    color: #FFF;
 }
+
 .deleteBowl {
-  position: absolute;
-  right: -10px;
-  top: -10px;
-  background-color: #0A0A0A;
-  border-radius: 20px;
-  height: 25px;
-  color: #FFF;
-  width: 25px;
-  text-align: center;
-  padding: 2px;
-  cursor: pointer;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    background-color: #0A0A0A;
+    border-radius: 20px;
+    height: 25px;
+    color: #FFF;
+    width: 25px;
+    text-align: center;
+    padding: 2px;
+    cursor: pointer;
 }
+
 .card-content.success {
-  background-color: #00e676;
-  color: #FFF;
+    background-color: #00e676;
+    color: #FFF;
 }
+
 .card-content.fail {
-  background-color: #ef5350;
-  color: #FFF;
+    background-color: #ef5350;
+    color: #FFF;
+}
+
+body {
+    background: #181818;
+}
+
+.light {
+    width: 173px;
+    margin: 45px auto;
+}
+
+.light:after {
+    content: '';
+    position: relative;
+    background: gold;
+    left: 50%;
+    margin-left: -5px;
+    bottom: -70px;
+    width: 20px;
+    height: 60px;
+}
+
+.light-column {
+    position: relative;
+    float: left;
+}
+
+.circle {
+    background: #FFF;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin: .5em .3em;
+    -webkit-box-shadow: 0px 0px 5px 7px rgba(111, 193, 249, .85);
+    -moz-box-shadow: 0px 0px 15px 7px rgba(111, 193, 249, .85);
+    box-shadow: 0px 0px 15px 7px rgba(111, 193, 249, .85);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #EF5350;
+    color: #FFF;
+    transition: 0.25s;
+    border-radius: 20px;
+    width: 25%;
+}
+
+.btn-outline:hover {
+    background-color: #EF5350;
+}
+
+.btn-outline:focus{
+	background-color:#EF5350;
+}
+
+.btn-row {
+    margin-top: 30%;
+    width: 100%;
+}
+
+.btn-row .btn-outline {
+    margin-right: 20%;
+    width: 100%;
+}
+
+.grass {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    background: #138a36;
+    border-radius: 75px 75px 0 0;
+    box-shadow: inset 30px 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.fieldgoal.left {
+    transform: skew(5deg, 10deg);
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+    border: 10px solid gold;
+    border-top: none;
+    width: 150px;
+    height: 200px;
+    z-index: 2;
+    border-style: ridge;
+    border-top: none;
+}
+
+.fieldgoal.right {
+    transform: skew(10deg, 5deg);
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
+    border: 10px solid gold;
+    border-top: none;
+    width: 150px;
+    height: 200px;
+    z-index: 2;
+    border-style: ridge;
+    border-top: none;
+}
+
+.fieldgoal:after {
+    content: '';
+    position: absolute;
+    background: gold;
+    left: 50%;
+    margin-left: -5px;
+    bottom: -70px;
+    width: 10px;
+    height: 60px;
+}
+
+.ball {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 80px;
+    border-left-color: #70501A;
+    border-right-color: #7F6216;
+    border-radius: 0 80%;
+    -webkit-animation: kick 2s ease infinite;
+}
+
+@-webkit-keyframes kick {
+    0% {
+        margin-right: -600px;
+        -webkit-transform: scale(0.1);
+        -webkit-transform: rotate(45deg) scale(0.3);
+        z-index: 3;
+    }
+    50% {
+        margin-top: 0;
+        z-index: 1;
+    }
+    100% {
+        margin-top: 200px;
+        left: 150px;
+        -webkit-transform: scale(0.1);
+        z-index: 1;
+    }
+}
+
+.lace {
+    position: absolute;
+    width: 10px;
+    left: 0px;
+    top: -45px;
+    margin-left: 2.5px;
+    bottom: 20px;
+    height: 100px;
+    background: #FFF;
+    -webkit-transform: rotate(-45deg);
+}
+
+.lace:before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 25px;
+    width: 30px;
+    height: 10px;
+    background: #FFF;
+}
+
+.lace:after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    bottom: 25px;
+    width: 30px;
+    height: 10px;
+    background: #FFF;
 }

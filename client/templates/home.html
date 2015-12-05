@@ -1,33 +1,129 @@
 <template name="home">
     {{>nav}}
-    <div class="container">
+    <div class="container center">
         <div class="row">
             <div class="col l4">
-                <div class="card small hoverable">
-                    <div class="card-content">
-                    <p>New visitors may register here.</p>
-                        {{>register}}
+                <div class='light'>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
                     </div>
-                    <a id="signup" class="waves-effect waves-red btn-large action-button red lighten-2">Sign Up</a>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
                 </div>
             </div>
             <div class="col l4">
-                <div class="card small hoverable">
-                    <div class="card-content">
-                    <p>Existing users can login here.</p>
-                        {{>login}}
+                <div class='light'>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
                     </div>
-                    <a id="login" class="waves-effect waves-red btn-large action-button red lighten-2">Login</a>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
                 </div>
             </div>
             <div class="col l4">
-                <div class="card small hoverable">
-                    <div class="card-content">
-                        <h4>View Scoreboard</h4>
+                <div class='light'>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
                     </div>
-                    <a class="waves-effect waves-red btn-large action-button red lighten-2">View Leaders!</a>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
+                    <div class='light-column'>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                        <div class='circle'></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="btn-row row">
+            <div class="col l4">
+                <button class="btn-large btn-outline">View Scoreboard</button>
+            </div>
+            <div class="col l4">
+                <button class="btn-large btn-outline modal-trigger" data-target="signUpModal">Sign Up</button>
+            </div>
+            <div class="col l4">
+                <button class="btn-large btn-outline modal-trigger" data-target="loginModal">Login</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ball">
+                <div class="lace"></div>
+            </div>
+            <div class="fieldgoal left"></div>
+            <div class="fieldgoal right"></div>
+            <div class="grass"></div>
+        </div>
+        {{>signUpModal}} {{>loginModal}}
     </div>
 </template>

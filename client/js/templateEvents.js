@@ -1,4 +1,8 @@
 if (Meteor.isClient) {
+    Template.home.rendered = function(){
+         $('.modal-trigger').leanModal();
+    };
+
     Template.home.events({
         'click #signup': function(event) {
             event.preventDefault();

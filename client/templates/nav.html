@@ -1,14 +1,14 @@
 <template name="nav">
     <nav class="red lighten-1">
         <div class="nav-wrapper">
-            <a href="/" class="brand-logo">Livingston Bowl Invitational</a>
+            <a href="/" class="brand-logo">Bowl Blitz</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/scoreboard">Scoreboard</a></li>
                 {{#if currentUser}}
 	                <li><a href="/bowlPicks">Make Picks</a></li>
 	                {{#if isInRole 'admin'}}
                         <li><a href="/admin">Admin</a></li>
 	                {{/if}}
+                    <li><a href="/scoreboard">Scoreboard</a></li>
                 	<li><a href="#" class="logout">Logout</a></li>
                 {{/if}}
             </ul>
