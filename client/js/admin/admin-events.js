@@ -6,6 +6,7 @@ if (Meteor.isClient) {
             selectYears: 15, // Creates a dropdown of 15 years to control year
             format: 'mm/d/yyyy',
         });
+        $('.button-collapse').sideNav('hide');
     };
 
     Template.admin.events({

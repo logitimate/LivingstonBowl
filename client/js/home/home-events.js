@@ -1,6 +1,7 @@
  if (Meteor.isClient) {
      Template.home.rendered = function() {
          $('.modal-trigger').leanModal();
+         $('.button-collapse').sideNav('hide');
      };
 
      Template.home.events({

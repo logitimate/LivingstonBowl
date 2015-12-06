@@ -1,4 +1,8 @@
 if (Meteor.isClient) {
+    Template.bowlPicks.rendered = function () {
+        $('.button-collapse').sideNav('hide');
+    };
+    
     Template.bowlPicks.events({
         'click .team-pick': function(e) {
             $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected');
