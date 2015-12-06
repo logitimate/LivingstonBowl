@@ -2,7 +2,7 @@
   "public": {
     "analyticsSettings": {
       // Add your analytics tracking ids here (remove this line before running)
-      "Google Analytics" : {"trackingId": "UA-55145881-1"},
+      "Google Analytics" : {"trackingId": "UA-71061696-1"},
       "Amplitude"        : {"apikey": "..."},
       "Chartbeat"        : {"uid": "..."},
       "comScore"         : {"c2": "..."},
