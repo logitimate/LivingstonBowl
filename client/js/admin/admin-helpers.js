@@ -1,7 +1,9 @@
 if (Meteor.isClient) {
     Template.admin.helpers({
         bowls: function() {
-            return Bowls.find().fetch();
+            return _.sortBy(Bowls.find({}).fetch(), function(bowl){
+                return new Date(bowl.date);
+            });
         },
         isWinner: function(params) {
             var game = Bowls.findOne({
