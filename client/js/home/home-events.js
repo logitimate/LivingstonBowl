@@ -18,14 +18,14 @@
                      }
                  }, function(error) {
                      if (error) {
-                         Meteor.myFunctions.newMessage(error.reason, "error", 10);
+                         Meteor.myFunctions.newMessage(error.reason, "error", 5);
                      } else {
                         $('#signUpModal').closeModal();
                          Router.go("bowlPicks");
                      }
                  });
              } else
-                 Meteor.myFunctions.newMessage("Passwords did not match.", "error", 10);
+                 Meteor.myFunctions.newMessage("Passwords did not match.", "error", 3);
          },
          'click #login': function(event) {
              event.preventDefault();
@@ -37,7 +37,7 @@
                  email: email
              }, password, function(error) {
                  if (error) {
-                     Meteor.myFunctions.newMessage(error.reason, "error", 10);
+                     Meteor.myFunctions.newMessage(error.reason, "error", 5);
                      console.log(error.reason);
                  } else {
                     $('#loginModal').closeModal();

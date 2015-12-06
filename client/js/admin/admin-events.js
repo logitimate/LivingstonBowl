@@ -17,7 +17,7 @@ if (Meteor.isClient) {
             var bowlDate = $('#bowlDate').val();
             var season = $('#season').val();
             if (!(bowlName && team1 && team2 && bowlDate && season)) {
-                Meteor.myFunctions.newMessage("All fields are required to create bowl.", 'error', 5);
+                Meteor.myFunctions.newMessage("All fields are required to create bowl.", 'error', 3);
             } else {
                 var bowlGameEntry = {
                     'bowlName': bowlName,
@@ -32,7 +32,7 @@ if (Meteor.isClient) {
                         console.log(error);
                     } else {
                         $('input').val('');
-                        Meteor.myFunctions.newMessage("You added a bowl game!", 'success', 5);
+                        Meteor.myFunctions.newMessage("You added a bowl game!", 'success', 3);
                     }
                 });
             }
@@ -49,7 +49,7 @@ if (Meteor.isClient) {
             $.each($('.card-container'), function() {
                 Meteor.call('addWinner', $(this).find('#name').text(), $(this).data('season'), $(this).find('.selected').find('.team').text());
             });
-            Meteor.myFunctions.newMessage("Winners have been Submitted.", 'success', 5);
+            Meteor.myFunctions.newMessage("Winners have been Submitted.", 'success', 3);
         }
     });
 }
