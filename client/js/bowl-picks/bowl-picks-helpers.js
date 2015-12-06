@@ -7,17 +7,6 @@ if (Meteor.isClient) {
                 }
             }).fetch();
         },
-        isNotLocked: function() {
-            var firstBowl = Bowls.find({}, {
-                sort: {
-                    date: 1
-                },
-                limit: 1
-            }).fetch();
-            var firstBowlDate = firstBowl[0].date;
-            var today = moment(new Date());
-            return moment(firstBowlDate).isAfter(today);
-        },
         isLocked: function() {
             var firstBowl = Bowls.find({}, {
                 sort: {
@@ -25,9 +14,9 @@ if (Meteor.isClient) {
                 },
                 limit: 1
             }).fetch();
-            var firstBowlDate = firstBowl[0].date;
+            var firstBowlDate = moment(firstBowl[0].date);
             var today = moment(new Date());
-            return !moment(firstBowlDate).isAfter(today);
+            return firstBowlDate.isBefore(today) || firstBowlDate === today;
         },
         isCorrect: function(params) {
             var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});

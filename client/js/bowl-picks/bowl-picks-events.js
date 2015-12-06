@@ -12,13 +12,32 @@ if (Meteor.isClient) {
             }
 
             $.each($('.card-container'), function() {
-                Meteor.call('savePick', {
-                    'owner': Meteor.userId(),
-                    'season': $(this).data('season'),
-                    'name': $(this).find('#name').text(),
-                    'choice': $(this).find('.selected').find('#pickText').text()
-                })
+                var name = $(this).find('#name').text();
+                var season = $(this).data('season');
+                var choice = $(this).find('.selected').find('#pickText').text();
+                var pick = undefined;
+                Meteor.call('getPick', name, season, Meteor.userId(), function(error, result){
+                    if(error) {
+                        Meteor.myFunctions.newMessage('Picks failed to save.', 'error', 10);
+                    }
+                    else {
+                        var pick = result;
+                        if(!pick) {
+                            Meteor.call('savePick', {
+                                'owner': Meteor.userId(),
+                                'season': season,
+                                'name': name,
+                                'choice': choice
+                            })
+                        } else {
+                            pick['choice'] = choice;
+                            Meteor.call('updatePick', pick);
+                        }
+                    }
+                });
             });
+
+            Meteor.myFunctions.newMessage('Picks were saved successfully.', 'success', 10);
         }
     });
 }

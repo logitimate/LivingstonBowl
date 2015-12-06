@@ -1,7 +1,7 @@
 <template name="bowlPicks">
     {{>nav}}
     <div class="row bowlContainer">
-    {{#if isNotLocked}}
+    {{#if isLocked}}
         <div class="row">
             <div class="col l12">
                 <h4 class="white-text">Bowls have begun! May the odds be ever in your favor.</h4>
@@ -39,11 +39,11 @@
         </div>
         {{/each}}
     </div>
-    {{#if isLocked}}
+    {{#unless isLocked}}
         <div class="row fixed">
             <div class="col l12">
                 <a id="submitPicks" class="waves-effect waves-red btn-large btn-outline right">Submit</a>
             </div>
         </div>
-    {{/if}}
+    {{/unless}}
 </template>
