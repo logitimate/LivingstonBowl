@@ -49,6 +49,8 @@
     });
 
     if (Meteor.isServer) {
+        var Future = Npm.require( 'fibers/future' )
+
         Meteor.methods({
             addBowl: function(bowlEntry) {
                 Bowls.insert(bowlEntry)
@@ -68,6 +70,12 @@
             },
             savePick: function(pick) {
                 Picks.insert(pick)
+            },
+            getPick: function(name, season, owner) {
+                return Picks.findOne({'season':season, 'name':name, 'owner':owner});
+            },
+            updatePick: function(pick) {
+                Picks.update({'_id':pick._id}, pick);
             }
         })
     };
