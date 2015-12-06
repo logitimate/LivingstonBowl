@@ -15,6 +15,10 @@ if (Meteor.isClient) {
         this.render('admin');
     });
 
+    Router.route('/picksByBowl', function() {
+        this.render('picksByBowl');
+    });
+
     Router.route('viewUserPicks', {
         path: '/picks/:userId',
         template: 'viewUserPicks',

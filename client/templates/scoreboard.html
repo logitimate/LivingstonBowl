@@ -2,7 +2,12 @@
     {{>nav}}
     <div class="container scoreboard-conatiner">
         <div class="row">
-            <h4 class="white-text">Scoreboard</h4>
+            <div class="col s4 l4 m4">
+                <h4 class="white-text">Scoreboard</h4>
+            </div>
+            <div class="col s8 l8 m8">
+                 <a class="btn-large btn-outline" href="/picksByBowl"> Scoreboard</a>
+            </div>
         </div>
         {{#each scores}}
         <div class="row user-row" data-userid="{{id}}">
