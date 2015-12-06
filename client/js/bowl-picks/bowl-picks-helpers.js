@@ -1,11 +1,9 @@
 if (Meteor.isClient) {
     Template.bowlPicks.helpers({
         bowls: function() {
-            return Bowls.find({}, {
-                sort: {
-                    'date': 1
-                }
-            }).fetch();
+            return _.sortBy(Bowls.find({}).fetch(), function(bowl){
+                return new Date(bowl.date);
+            });
         },
         isLocked: function() {
             var firstBowl = Bowls.find({}, {

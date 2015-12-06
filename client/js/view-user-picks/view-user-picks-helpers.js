@@ -3,11 +3,9 @@
 
      Template.viewUserPicks.helpers({
          bowls: function() {
-             return Bowls.find({}, {
-                 sort: {
-                     'date': 1
-                 }
-             }).fetch();
+            return _.sortBy(Bowls.find({}).fetch(), function(bowl){
+                return new Date(bowl.date);
+            });
          },
          isCorrect: function(params) {
 
