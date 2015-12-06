@@ -1,18 +1,8 @@
+
 {
-  "public": {
-    "analyticsSettings": {
-      // Add your analytics tracking ids here (remove this line before running)
-      "Google Analytics" : {"trackingId": "UA-71061696-1"},
-      "Amplitude"        : {"apikey": "..."},
-      "Chartbeat"        : {"uid": "..."},
-      "comScore"         : {"c2": "..."},
-      "HubSpot"          : {"portalId": "..."},
-      "Intercom"         : {"appId": "..."},
-      "Keen IO"          : {"projectId": "...", "writeKey": "..."},
-      "KISSmetrics"      : {"apiKey": "..."},
-      "Mixpanel"         : {"token":  "...", "people": true},
-      "Quantcast"        : {"pCode": "..."},
-      "Segment.io"       : {"apiKey": "..."}
+    "public": {
+        "ga": {
+            "id": "UA-71061696-1"
+        }
     }
-  }
 }
