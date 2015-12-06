@@ -4,20 +4,21 @@
         <div class="row">
             <h4 class="white-text">Scoreboard</h4>
         </div>
+        {{#each scores}}
         <div class="row">
             <div class="col l12 s12 m12">
                 <div class="score-container">
                     <div class="col s1 m1 l1 place-text red lighten-2">
-                        <h3 class="white-text">1</h3>
+                        <h3 class="white-text">{{index}}</h3>
                     </div>
                     <div class="col l6 s6 m6">
                         <div class="name-container">
-                            <h4>Logan Livingston</h4>
+                            <h4>{{name}}</h4>
                         </div>
                     </div>
                     <div class="col l5 s5 m5">
                         <div class="wins-container">
-                            <h5 class="right">10 wins</h5>
+                            <h5 class="right">{{wins}} wins</h5>
                         </div>
                     </div>
                     <div class="different-container">
@@ -26,5 +27,6 @@
                 </div>
             </div>
         </div>
+        {{/each}}
     </div>
 </template>

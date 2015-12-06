@@ -1,5 +1,4 @@
 Meteor.myFunctions = {
-
         newMessage: function(message, type, duration) {
             $('.messenger').removeClass('animated');
 
