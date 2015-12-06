@@ -5,7 +5,7 @@
             <h4 class="white-text">Scoreboard</h4>
         </div>
         {{#each scores}}
-        <div class="row" data-userid="{{id}}">
+        <div class="row user-row" data-userid="{{id}}">
             <div class="col l12 s12 m12">
                 <div class="score-container">
                     <div class="col s1 m1 l1 place-text cyan lighten-2">
@@ -21,9 +21,11 @@
                             <h5 class="right">{{wins}} wins</h5>
                         </div>
                     </div>
+                    {{#if currentUser}}
                     <div class="different-container">
                         <h5>{{differences}} different</h5>
                     </div>
+                    {{/if}}
                 </div>
             </div>
         </div>
