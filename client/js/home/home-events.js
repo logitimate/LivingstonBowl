@@ -19,6 +19,7 @@
                      if (error) {
                          Meteor.myFunctions.newMessage(error.reason, "error", 10);
                      } else {
+                        $('#signUpModal').closeModal();
                          Router.go("bowlPicks");
                      }
                  });
@@ -38,6 +39,7 @@
                      Meteor.myFunctions.newMessage(error.reason, "error", 10);
                      console.log(error.reason);
                  } else {
+                    $('#loginModal').closeModal();
                      Router.go("bowlPicks");
                  }
              });
