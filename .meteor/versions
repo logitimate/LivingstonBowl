@@ -47,6 +47,7 @@ momentjs:moment@2.10.6
 mongo@1.1.0
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
+okgrow:analytics@1.0.4
 ordered-dict@1.0.3
 pcel:messenger@1.4.2
 random@1.0.3
