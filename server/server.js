@@ -4,15 +4,21 @@
 
             console.log('Creating users: ');
 
-            var users = [{
-                name: "Normal User",
-                email: "normal@example.com",
-                roles: []
-            }, {
-                name: "Logan Livingston",
-                email: "lrlivingston@live.com",
-                roles: ['admin']
-            }];
+            var users = [
+                {
+                    name: "Normal User",
+                    email: "normal@example.com",
+                    roles: []
+                }, {
+                    name: "Logan Livingston",
+                    email: "lrlivingston@live.com",
+                    roles: ['admin']
+                }, {
+                    name: "Cameron Gray",
+                    email: "cjfgray@gmail.com",
+                    roles: ['admin']
+                }
+            ];
 
             _.each(users, function(userData) {
                 var id,
@@ -51,10 +57,14 @@
                 Bowls.remove( { "bowlName": bowlName })
             },
             addWinner: function(name, season, winner){
-                var bowl = Bowls.findOne({ 'bowlName' : name, 'season' : ''+ season });
-                console.log(bowl);
+                var bowl = Bowls.findOne({ 'bowlName' : name, 'season' : ''+season });
+                var picks = Picks.find({'name': name},{'season':''+season}).fetch();
                 bowl['winner'] = winner;
-                Bowls.update({'bowlName':name, 'season': ''+ season}, bowl)
+                Bowls.update({'bowlName':name, 'season': ''+ season}, bowl);
+                _.each(picks, function(val, index) {
+                    val['status'] = (winner === val['choice'] ? 'win' : 'lose');
+                    Picks.update({'_id': val['_id']}, val);
+                });
             },
             savePick: function(pick) {
                 Picks.insert(pick)

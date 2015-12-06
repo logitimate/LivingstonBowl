@@ -11,18 +11,24 @@ if (Meteor.isClient) {
     Template.home.events({
         'click #signup': function(event) {
             event.preventDefault();
-            var email = $('#emailSignup').val();
             var password = $('#passwordSignup').val();
-            Accounts.createUser({
-                email: email,
-                password: password
-            }, function(error) {
-                if (error) {
-                	Meteor.myFunctions.newMessage(error.reason, "error", 10);
-                } else {
-                    Router.go("bowlPicks");
-                }
-            });
+            var confirmPass = $('#passwordConfirmation').val();
+            if(password === confirmPass) {
+                Accounts.createUser({
+                    email: $('#emailSignup').val(),
+                    password: password,
+                    profile: {
+                        name: $('#firstName').val() + ' ' + $('#lastName').val()
+                    }
+                }, function(error) {
+                    if (error) {
+                    	Meteor.myFunctions.newMessage(error.reason, "error", 10);
+                    } else {
+                        Router.go("bowlPicks");
+                    }
+                });
+            } else 
+                Meteor.myFunctions.newMessage("Passwords did not match.", "error", 10);
         },
          'click #login': function(event) {
             event.preventDefault();
@@ -74,7 +80,6 @@ if (Meteor.isClient) {
             if(game.winner === params.hash.team)
                 return 'selected';
             else {
-                console.log('else');
                 return '';
             }
         }
@@ -87,22 +92,26 @@ if (Meteor.isClient) {
             var team2 = $('#team2').val();
             var bowlDate = $('#bowlDate').val();
             var season = $('#season').val();
-            var bowlGameEntry = {
-                'bowlName' : bowlName,
-                'team1' : team1,
-                'team2' : team2,
-                'date' : bowlDate,
-                'season' : season
-            };
+            if(!(bowlName && team1 && team2 && bowlDate && season)) {
+                Meteor.myFunctions.newMessage("All fields are required to create bowl.", 'error', 5);
+            } else {
+                var bowlGameEntry = {
+                    'bowlName' : bowlName,
+                    'team1' : team1,
+                    'team2' : team2,
+                    'date' : bowlDate,
+                    'season' : season
+                };
 
-            Meteor.call('addBowl', bowlGameEntry, function(error, result) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    $('input').val('');
-                    Meteor.myFunctions.newMessage("You added a bowl game!", 'success', 15);
-                }
-            });
+                Meteor.call('addBowl', bowlGameEntry, function(error, result) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        $('input').val('');
+                        Meteor.myFunctions.newMessage("You added a bowl game!", 'success', 5);
+                    }
+                });
+            }
         },
         'click .deleteBowl': function(e){
             var bowlName = $(e.currentTarget).closest('.card').find('#name').text();
@@ -114,9 +123,9 @@ if (Meteor.isClient) {
         },
         'click #submitWinners': function(e) {
             $.each($('.card-container'), function(){
-                console.log($(this).data());
                Meteor.call('addWinner', $(this).find('#name').text(), $(this).data('season'), $(this).find('.selected').find('.team').text());
             });
+            Meteor.myFunctions.newMessage("Winners have been Submitted.", 'success', 5);
         }
     });
 
@@ -129,14 +138,16 @@ if (Meteor.isClient) {
         isCorrect: function(params) {
             var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
 
-            if(params.hash.winner === undefined)
-                return '';
-            if(pick.winner === params.hash.winner && pick.winner === params.hash.team)
+            if(params.hash.winner === undefined) {
+                if(pick.choice === params.hash.team)
+                    return 'picked';
+                else 
+                    return '';
+            }
+            else if(pick.choice === params.hash.winner && pick.choice === params.hash.team)
                 return 'success';
-            else if (pick.winner != params.hash.winner && pick.winner === params.hash.team)
+            else if (pick.choice != params.hash.winner && pick.choice === params.hash.team)
                 return 'fail';
-            else
-                return '';
         }
     });
 
@@ -157,9 +168,36 @@ if (Meteor.isClient) {
                     'owner' : Meteor.userId()   ,
                     'season' : $(this).data('season'),
                     'name' : $(this).find('#name').text(),
-                    'winner' : $(this).find('.selected').find('#pickText').text()
+                    'choice' : $(this).find('.selected').find('#pickText').text()
                 })
             });
         }
     });
+
+    Template.scoreboard.helpers({
+        'userPicks' : function(e) {
+            return bowlPicks.find({'owner':Meteor.userId(), 'season':'2015'}).fetch();
+        },
+        'scores' : function(e) {
+            var users  = [];
+            _.each(Meteor.users.find().fetch(), function(value, index){ 
+                var picks = Picks.find({'owner':value._id},{'season':'2015'}).fetch();
+                console.log(picks);
+                var wins = _.reduce(picks, function(count, pick){ 
+                    if(!pick['status'] || pick['status'] === 'lose')
+                        return count;
+                    else
+                        return count + 1; 
+                }, 0)
+                users.push({'id':value._id, 'name': value.profile.name, 'wins': wins}) 
+            });
+
+            return _.map(_.sortBy(users, 'wins').reverse(), function(val, index){
+                val['index'] = index + 1;
+                return val;
+            });
+        }
+    });
+
+    Template.scoreboard.events({});
 }
