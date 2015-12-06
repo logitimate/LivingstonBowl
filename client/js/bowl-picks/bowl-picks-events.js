@@ -11,7 +11,7 @@ if (Meteor.isClient) {
         'click #submitPicks': function(e) {
             if ($('.card-container').find('.selected').length == 0) {
                 console.log('true');
-                Meteor.myFunctions.newMessage('You must select all the winners before submitting.', 'error', 10);
+                Meteor.myFunctions.newMessage('You must select all the winners before submitting.', 'error', 5);
                 return false;
             }
 
@@ -24,7 +24,7 @@ if (Meteor.isClient) {
                 var pick = undefined;
                 Meteor.call('getPick', name, season, Meteor.userId(), function(error, result){
                     if(error) {
-                        Meteor.myFunctions.newMessage('Picks failed to save.', 'error', 10);
+                        Meteor.myFunctions.newMessage('Picks failed to save.', 'error', 3);
                     }
                     else {
                         var pick = result;
@@ -43,7 +43,7 @@ if (Meteor.isClient) {
                 });
             });
 
-            Meteor.myFunctions.newMessage('Picks were saved successfully.', 'success', 10);
+            Meteor.myFunctions.newMessage('Picks were saved successfully.', 'success', 3);
         }
     });
 }
