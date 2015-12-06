@@ -149,17 +149,16 @@ if (Meteor.isClient) {
         },
         isCorrect: function(params) {
             var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
-
-            if(params.hash.winner === undefined) {
-                if(pick.choice === params.hash.team)
-                    return 'picked';
-                else 
-                    return '';
-            }
-            else if(pick.choice === params.hash.winner && pick.choice === params.hash.team)
+            if(!pick.status && pick.choice === params.hash.team)
+                return 'picked';
+            else if(!pick.status && pick.choice != params.hash.team)
+                return '';
+            else if(pick.status === 'win' && pick.choice === params.hash.team)
                 return 'success';
-            else if (pick.choice != params.hash.winner && pick.choice === params.hash.team)
+            else if (pick.status === 'lose' && pick.choice === params.hash.team)
                 return 'fail';
+            else
+                return '';
         }
     });
 
