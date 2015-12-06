@@ -1,5 +1,32 @@
 @mainColor: #EF5350;
 .home-container {
+    /* label color */
+    .input-field label {
+        color: #000;
+    }
+    /* label focus color */
+    .input-field input[type=text]:focus + label {
+        color: #000;
+    }
+    /* label underline focus color */
+    .input-field input[type=text]:focus {
+        border-bottom: 1px solid #000;
+        box-shadow: 0 1px 0 0 #000;
+    }
+    /* valid color */
+    .input-field input[type=text].valid {
+        border-bottom: 1px solid #000;
+        box-shadow: 0 1px 0 0 #000;
+    }
+    /* invalid color */
+    .input-field input[type=text].invalid {
+        border-bottom: 1px solid #000;
+        box-shadow: 0 1px 0 0 #000;
+    }
+    /* icon prefix focus color */
+    .input-field .prefix.active {
+        color: #000;
+    }
     .light {
         width: 173px;
         margin: 45px auto;
@@ -60,11 +87,11 @@
         transform: skew(5deg, 10deg);
         position: absolute;
         bottom: 100px;
-        left: 50px;
+        left: 10px;
         border: 10px solid gold;
         border-top: none;
         width: 150px;
-        height: 200px;
+        height: 150px;
         z-index: 2;
         border-style: ridge;
         border-top: none;
@@ -73,11 +100,11 @@
         transform: skew(10deg, 5deg);
         position: absolute;
         bottom: 100px;
-        right: 50px;
+        right: 10px;
         border: 10px solid gold;
         border-top: none;
         width: 150px;
-        height: 200px;
+        height: 150px;
         z-index: 2;
         border-style: ridge;
         border-top: none;
@@ -187,7 +214,7 @@
             }
         }
         .name-container {
-            padding:2%;
+            padding: 2%;
             color: #5a5a5a;
         }
     }
@@ -245,15 +272,10 @@ nav {
 
 body {
     background: #232526;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #232526, #414345);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #232526, #414345);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+   }
 
 .btn-outline {
-    background-color: transparent;
+    background-color: #232526;
     border: 1px solid @mainColor;
     color: #FFF;
     transition: 0.25s;
@@ -268,10 +290,12 @@ body {
 }
 
 .btn-row {
-    margin-top: 25%;
+    margin-top: 15%;
     width: 100%;
+    z-index:10;
     .btn-outline {
         margin-right: 20%;
+        margin-bottom:10px;
         width: 100%;
     }
 }

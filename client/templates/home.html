@@ -1,8 +1,8 @@
 <template name="home">
     {{>nav}}
     <div class="container center home-container">
-        <div class="row">
-            <div class="col l4">
+        <div class="row hide-on-small-only">
+            <div class="col l4 m4">
                 <div class='light'>
                     <div class='light-column'>
                         <div class='circle'></div>
@@ -37,7 +37,7 @@
                 </div>
                  <div class="light-pole"></div>
             </div>
-            <div class="col l4">
+            <div class="col l4 m4">
                 <div class='light'>
                     <div class='light-column'>
                         <div class='circle'></div>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="light-pole"></div>
             </div>
-            <div class="col l4">
+            <div class="col l4 m4">
                 <div class='light'>
                     <div class='light-column'>
                         <div class='circle'></div>
@@ -109,22 +109,22 @@
             </div>
         </div>
         <div class="btn-row row">
-            <div class="col l4">
-                <a class="btn-large btn-outline" href="/scoreboard">View Scoreboard</a>
+            <div class="col l4 m4 s12">
+                <a class="btn-large btn-outline" href="/scoreboard"> Scoreboard</a>
             </div>
-            <div class="col l4">
+            <div class="col l4 m4 s12">
                 <button class="btn-large btn-outline modal-trigger" data-target="signUpModal">Sign Up</button>
             </div>
-            <div class="col l4">
+            <div class="col l4 m4 s12">
                 <button class="btn-large btn-outline modal-trigger" data-target="loginModal">Login</button>
             </div>
         </div>
         <div class="row">
-            <div class="ball">
+            <div class="ball hide-on-small-only">
                 <div class="lace"></div>
             </div>
             <div class="fieldgoal left"></div>
-            <div class="fieldgoal right"></div>
+            <div class="fieldgoal right hide-on-small-only"></div>
             <div class="grass"></div>
         </div>
         {{>signUpModal}} {{>loginModal}}
