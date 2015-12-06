@@ -14,17 +14,33 @@ if (Meteor.isClient) {
                 }, {
                     'season': '2015'
                 }).fetch();
-                console.log(picks);
+
                 var wins = _.reduce(picks, function(count, pick) {
                     if (!pick['status'] || pick['status'] === 'lose')
                         return count;
                     else
                         return count + 1;
                 }, 0)
+
+                var differences = 0;
+                
+                if(value._id != Meteor.userId()) {
+                    var userPicks = Picks.find({
+                        'owner': Meteor.userId()
+                    }, {
+                        'season': '2015'
+                    }).fetch(); 
+                    var picksChoices = _.map(picks, function(value, index){ return value.choice });
+                    var userChoices = _.map(userPicks, function(value, index){ return value.choice});
+
+                    differences = _.difference(picksChoices, userChoices).length;
+                }
+
                 users.push({
                     'id': value._id,
                     'name': value.profile.name,
-                    'wins': wins
+                    'wins': wins,
+                    'differences' : differences
                 })
             });
 
