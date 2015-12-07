@@ -18,6 +18,8 @@ if (Meteor.isClient) {
         },
         isCorrect: function(params) {
             var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
+            if(!pick)
+                return '';
             if(!pick.status && pick.choice === params.hash.team)
                 return 'picked';
             else if(!pick.status && pick.choice != params.hash.team)
