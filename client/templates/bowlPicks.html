@@ -22,6 +22,7 @@
                         <div class="col s6 m6 l6 center">
                             <div class="team-pick card">
                                 <div class="card-content {{isPicked bowlName=bowlName season=season team=team1}}">
+                                {{#if isPicked bowlName=bowlName season=season team=team1}}
                                     {{#if isCorrect bowlName=bowlName season=season team=team1}}
                                         <div class="icon-container green accent-3 valign-wrapper">
                                             <i class="fa fa-check valign"></i>
@@ -31,14 +32,15 @@
                                             <i class="fa fa-times valign"></i>
                                         </div>
                                     {{/if}}
+                                {{/if}}
                                     <h5 id="pickText">{{team1}}</h5>
-                                    
                                 </div>
                             </div>
                         </div>
                         <div class="col s6 m6 l6 center">
                             <div class="team-pick card">
                                 <div class="card-content {{isPicked bowlName=bowlName season=season team=team2}}">
+                                {{#if isPicked bowlName=bowlName season=season team=team2}}
                                     {{#if isCorrect bowlName=bowlName season=season team=team2}}
                                         <div class="icon-container green accent-3 valign-wrapper">
                                             <i class="fa fa-check valign"></i>
@@ -48,6 +50,7 @@
                                             <i class="fa fa-times valign"></i>
                                         </div>
                                     {{/if}}
+                                {{/if}}
                                     <h5 id="pickText">{{team2}}</h5>
                                 </div>
                             </div>
