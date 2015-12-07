@@ -1,0 +1,12 @@
+<template name="teamPicksModal">
+    <div id="teamPicksModal" class="modal">
+        <div class="modal-content">
+            <h4 class="left-align">Picks for {{team}}</h4>
+        </div>
+        <ul>
+        {{#each picks}}
+            <li>{{ownerName}}</li>
+        {{/each}}
+        </ul>
+    </div>
+</template>
