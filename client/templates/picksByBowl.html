@@ -12,11 +12,10 @@
                 </div>
                 <div class="card-content">
                     <div class="row">
-                        <div class="col s6 m6 l6 center">                                
+                        <div class="col s6 m6 l6 center">
                             <div class="card">
-                                <div class="card-content">
+                                <div class="card-content pick" data-team="{{team1}}" data-picks="{{picks team=team1 season=season name=bowlName}}">
                                     <h5 class="truncate">{{team1}}</h5>
-                                    <div class="hidden pick-data" data-team="{{team1}}" data-picks="{{picks team=team1 season=season name=bowlName}}"></div>
                                     <h5>
                                         {{counts team=team1 season=season name=bowlName}}
                                     </h5>
@@ -25,9 +24,8 @@
                         </div>
                         <div class="col s6 m6 l6 center">
                             <div class="card">
-                                <div class="card-content">
+                                <div class="card-content pick" data-team="{{team2}}" data-picks="{{picks team=team2 season=season name=bowlName}}">
                                     <h5 class="truncate">{{team2}}</h5>
-                                    <div class="hidden pick-data" data-team="{{team2}}" data-picks="{{picks team=team2 season=season name=bowlName}}"></div>
                                     <h5>
                                         {{counts team=team2 season=season name=bowlName}}
                                     </h5>
@@ -39,6 +37,6 @@
             </div>
         </div>
         {{/each}}
-        {{>teamPicksModal}}
     </div>
+    {{>teamPicksModal}}
 </template>
