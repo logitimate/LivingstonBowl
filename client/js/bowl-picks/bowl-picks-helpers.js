@@ -35,7 +35,7 @@ if (Meteor.isClient) {
             else if(pick.status === 'win' && pick.choice === params.hash.team)
                 return 'true';
             else if (pick.status === 'lose' && pick.choice === params.hash.team)
-                return 'fail';
+                return '';
             else
                 return '';
         }
