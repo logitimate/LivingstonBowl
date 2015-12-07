@@ -18,7 +18,6 @@ if (Meteor.isClient) {
         },
         isPicked: function(params) {
             var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
-            console.log(pick);
             if(pick.choice === params.hash.team)
                 return 'selected';
             else
@@ -26,15 +25,15 @@ if (Meteor.isClient) {
         },
         isCorrect: function(params){
             var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
-            if(!pick)
-                return '';
-            if(!pick.status && pick.choice === params.hash.team)
-                return 'picked';
-            else if(!pick.status && pick.choice != params.hash.team)
+            if(!pick || !pick.status)
                 return '';
             else if(pick.status === 'win' && pick.choice === params.hash.team)
-                return 'true';
+                return '<div class="icon-container green accent-3 valign-wrapper"><i class="fa fa-check valign"></i></div>';
+            else if(pick.status === 'win' && pick.choice != params.hash.team)
+                return '';
             else if (pick.status === 'lose' && pick.choice === params.hash.team)
+                return '<div class="icon-container red darken-2 valign-wrapper"><i class="fa fa-times valign"></i></div>';
+            else if(pick.status === 'lose' && pick.choice != params.hash.team)
                 return '';
             else
                 return '';

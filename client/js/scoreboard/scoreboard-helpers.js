@@ -20,7 +20,8 @@ if (Meteor.isClient) {
                         return count;
                     else
                         return count + 1;
-                }, 0)
+                }, 0);
+
 
                 var differences = 0;
                 

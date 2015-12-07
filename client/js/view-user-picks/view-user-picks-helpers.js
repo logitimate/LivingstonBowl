@@ -1,33 +1,35 @@
  if (Meteor.isClient) {
- 	var id;
-
      Template.viewUserPicks.helpers({
          bowls: function() {
             return _.sortBy(Bowls.find({}).fetch(), function(bowl){
                 return new Date(bowl.date);
             });
          },
-         isCorrect: function(params) {
-
-            var pick = Picks.findOne({
-                'name': params.hash.name,
-                'season': Number(params.hash.season),
-                'owner': id
-            });
-            console.log('pick in veiw helpers --> ', pick);
-            if (!pick.status && pick.choice === params.hash.team)
-                return 'picked';
-            else if (!pick.status && pick.choice != params.hash.team)
+         isPicked: function(params) {
+             var pick = Picks.findOne({'name': params.hash.name, 'season': Number(params.hash.season), 'owner': params.hash.owner});
+             if(!pick)
                 return '';
-            else if (pick.status === 'win' && pick.choice === params.hash.team)
-                return 'success';
-            else if (pick.status === 'lose' && pick.choice === params.hash.team)
-                return 'fail';
-            else
-                return '';
+             if(pick.choice === params.hash.team)
+                 return 'selected';
+             else
+                 return '';
          },
-         setId: function(params) {
-         	id = params.hash.id;
+         isCorrect: function(params){
+             var pick = Picks.findOne({'name': params.hash.name, 'season': Number(params.hash.season), 'owner': params.hash.owner});
+             if(!pick || !pick.status)
+                 return '';
+             else if(pick.status === 'win' && pick.choice === params.hash.team)
+                 return '<div class="icon-container green accent-3 valign-wrapper"><i class="fa fa-check valign"></i></div>';
+             else if(pick.status === 'win' && pick.choice != params.hash.team)
+                 return '';
+             else if (pick.status === 'lose' && pick.choice === params.hash.team)
+                 return '<div class="icon-container red darken-2 valign-wrapper"><i class="fa fa-times valign"></i></div>';
+             else if(pick.status === 'lose' && pick.choice != params.hash.team)
+                 return '';
+             else
+                 return '';
          }
      })
  }
+
+

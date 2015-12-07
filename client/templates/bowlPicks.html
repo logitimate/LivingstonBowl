@@ -22,17 +22,7 @@
                         <div class="col s6 m6 l6 center">
                             <div class="team-pick card">
                                 <div class="card-content {{isPicked bowlName=bowlName season=season team=team1}}">
-                                {{#if isPicked bowlName=bowlName season=season team=team1}}
-                                    {{#if isCorrect bowlName=bowlName season=season team=team1}}
-                                        <div class="icon-container green accent-3 valign-wrapper">
-                                            <i class="fa fa-check valign"></i>
-                                        </div>
-                                    {{else}}
-                                         <div class="icon-container red darken-2 valign-wrapper">
-                                            <i class="fa fa-times valign"></i>
-                                        </div>
-                                    {{/if}}
-                                {{/if}}
+                                    {{{isCorrect bowlName=bowlName season=season team=team1}}}
                                     <h5 id="pickText">{{team1}}</h5>
                                 </div>
                             </div>
@@ -40,17 +30,7 @@
                         <div class="col s6 m6 l6 center">
                             <div class="team-pick card">
                                 <div class="card-content {{isPicked bowlName=bowlName season=season team=team2}}">
-                                {{#if isPicked bowlName=bowlName season=season team=team2}}
-                                    {{#if isCorrect bowlName=bowlName season=season team=team2}}
-                                        <div class="icon-container green accent-3 valign-wrapper">
-                                            <i class="fa fa-check valign"></i>
-                                        </div>
-                                    {{else}}
-                                         <div class="icon-container red darken-2 valign-wrapper">
-                                            <i class="fa fa-times valign"></i>
-                                        </div>
-                                    {{/if}}
-                                {{/if}}
+                                    {{{isCorrect bowlName=bowlName season=season team=team2}}}
                                     <h5 id="pickText">{{team2}}</h5>
                                 </div>
                             </div>
@@ -60,11 +40,39 @@
             </div>
         </div>
         {{/each}}
+        <div class="col s12 m12 l12">
+            <div class="card card-small card-container" data-season="{{season}}">
+                <div class="row cyan darken-1 white-text">
+                    <div class="col s12 m12 l12">
+                        <h4 id="name" class="inline left" >Champion</h4>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12 m4 l4">
+                            <select name="championshipPick" id="championshipPick">
+                                {{#each playoffTeams}}
+                                <option value="{{.}}">{{.}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="input-field col s6 m4 l4">
+                            <input id="winningScore" type="text" class="validate">
+                            <label for="losingScore">Winning Score</label>
+                        </div>
+                        <div class="input-field  col s6 m4 l4">
+                            <input id="losingScore" type="text" class="validate">
+                            <label for="losingScore">Losing Score</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     {{#unless isLocked}}
         <div class="row fixed">
             <div class="col m12 s12 l12">
-                <a id="submitPicks" class="waves-effect waves-red btn-large btn-outline right">Submit</a>
+                <a id="submitPicks" class="waves-effect waves-cyan btn-large btn-outline right">Submit</a>
             </div>
         </div>
     {{/unless}}

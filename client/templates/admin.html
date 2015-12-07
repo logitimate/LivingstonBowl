@@ -28,14 +28,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col l4 m4 s12">
+        <div class="col l3 m4 s12">
             <a id="addBowl" class="waves-effect waves-cyan btn-large btn-outline">Add Bowl</a>
         </div>
-        <div class="col l4 m4 s12">
+        <div class="col l3 m4 s12">
             <a id="submitWinners" class="waves-effect waves-cyan btn-large btn-outline">Submit Winners</a>
         </div>
-        <div class="col l4 m4 s12">
+        <div class="col l3 m4 s12">
             <a id="addSeason" class="waves-effect waves-cyan btn-large btn-outline">Add New Season</a>
+        </div>
+        <div class="col l3 m4 s12">
+            <a id="addChampionShip" class="waves-effect waves-cyan btn-large btn-outline modal-trigger" data-target="championshipModal">Add Championship</a>
         </div>
     </div>
     <div class="row">
@@ -75,5 +78,6 @@
             </div>
         </div>
         {{/each}}
+        {{>championshipModal}}
     </div>
 </template>

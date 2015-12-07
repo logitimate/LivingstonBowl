@@ -34,6 +34,12 @@ if (Meteor.isClient) {
                 _id: params.hash.owner
             }).fetch()[0].profile.name
             return name;
+        },
+        isWinner: function(params) {
+            if(!params.hash.winner)
+                return '';
+
+            return params.hash.team === params.hash.winner ? 'green accent-4 white-text' : 'red lighten-2 white-text';
         }
     });
 
