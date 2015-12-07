@@ -16,7 +16,15 @@ if (Meteor.isClient) {
             var today = moment(new Date());
             return firstBowlDate.isBefore(today) || firstBowlDate === today;
         },
-        isCorrect: function(params) {
+        isPicked: function(params) {
+            var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
+            console.log(pick);
+            if(pick.choice === params.hash.team)
+                return 'selected';
+            else
+                return '';
+        },
+        isCorrect: function(params){
             var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
             if(!pick)
                 return '';
@@ -25,7 +33,7 @@ if (Meteor.isClient) {
             else if(!pick.status && pick.choice != params.hash.team)
                 return '';
             else if(pick.status === 'win' && pick.choice === params.hash.team)
-                return 'success';
+                return 'true';
             else if (pick.status === 'lose' && pick.choice === params.hash.team)
                 return 'fail';
             else
