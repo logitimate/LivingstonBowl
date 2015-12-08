@@ -47,9 +47,19 @@ if (Meteor.isClient) {
             $(e.currentTarget).addClass('selected');
         },
         'click #submitWinners': function(e) {
-            $.each($('.card-container'), function() {
+            if(!$('#championshipPick').val() || !$('#winningScore').val() || !$('#losingScore').val()) {
+                Meteor.myFunctions.newMessage('You must select a champ before submitting.', 'error', 5);
+                return false;
+            }
+
+            $.each($('.game-container'), function() {
                 Meteor.call('addWinner', $(this).find('#name').text(), $(this).data('season'), $(this).find('.selected').find('.team').text());
             });
+            var champ = Champions.findOne({'season':'2015'});
+            champ['winner'] = $('#championshipPick').val();
+            champ['winningScore'] = $('#winningScore').val(); 
+            champ['losingScore'] = $('#losingScore').val(); 
+            Champions.update({'_id':champ._id}, champ);
             Meteor.myFunctions.newMessage("Winners have been Submitted.", 'success', 3);
         }
     });

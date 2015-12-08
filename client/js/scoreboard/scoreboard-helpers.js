@@ -8,11 +8,11 @@ if (Meteor.isClient) {
         },
         'scores': function(e) {
             var users = [];
+            var champ = Champions.findOne({'season':'2015'});
             _.each(Meteor.users.find().fetch(), function(value, index) {
                 var picks = Picks.find({
-                    'owner': value._id
-                }, {
-                    'season': '2015'
+                    'owner': value._id,
+                    'season': 2015
                 }).fetch();
 
                 var wins = _.reduce(picks, function(count, pick) {
@@ -21,7 +21,12 @@ if (Meteor.isClient) {
                     else
                         return count + 1;
                 }, 0);
-
+    
+                var champPick = Picks.findOne({'owner': value._id, 'season': 2015, 'championship' : true});
+                if(champ && champPick && champ.winner == champPick.choice) {
+                    console.log('true');
+                    wins = wins + 1;
+                }
 
                 var differences = 0;
                 
