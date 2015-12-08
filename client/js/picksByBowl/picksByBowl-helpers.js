@@ -39,7 +39,7 @@ if (Meteor.isClient) {
             if(!params.hash.winner)
                 return '';
 
-            return params.hash.team === params.hash.winner ? 'green accent-4 white-text' : 'red lighten-2 white-text';
+            return params.hash.team === params.hash.winner ? 'green accent-4 white-text' : 'red darken-2 white-text';
         }
     });
 
