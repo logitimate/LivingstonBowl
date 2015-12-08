@@ -41,162 +41,7 @@
     .input-field .prefix.active {
         color: #000;
     }
-    .light {
-        width: 173px;
-        margin: 45px auto;
-        &:after {
-            content: '';
-            position: relative;
-            background: gold;
-            left: 50%;
-            margin-left: -5px;
-            bottom: -70px;
-            width: 20px;
-            height: 60px;
-        }
-        .light-column {
-            position: relative;
-            float: left;
-            background-color: #505050;
-            border-radius: 10px;
-        }
-        .circle {
-            background: #FFF;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            margin: .5em .3em;
-            -webkit-box-shadow: 0px 0px 5px 7px rgba(111, 193, 249, .85);
-            -moz-box-shadow: 0px 0px 15px 7px rgba(111, 193, 249, .85);
-            box-shadow: 0px 0px 15px 7px rgba(111, 193, 249, .85);
-        }
-    }
-    .light-pole {
-        position: relative;
-        height: 25%;
-        width: 15px;
-        height: 125px;
-        margin: 0 auto;
-        top: 75px;
-        background: #403B4A;
-        background: -webkit-linear-gradient(to left, #403B4A, #E7E9BB);
-        background: linear-gradient(to left, #403B4A, #E7E9BB);
-        border-radius: 10px 10px 0 0;
-    }
-    .grass {
-        width: 100%;
-        height: 100px;
-        position: absolute;
-        top: auto;
-        right: 0;
-        bottom: 0;
-        left: auto;
-        background: #138a36;
-        border-radius: 75px 75px 0 0;
-        box-shadow: inset 30px 30px 60px rgba(0, 0, 0, 0.25);
-    }
-    .fieldgoal.left {
-        transform: skew(5deg, 10deg);
-        position: absolute;
-        bottom: 100px;
-        left: 10px;
-        border: 10px solid gold;
-        border-top: none;
-        width: 150px;
-        height: 150px;
-        z-index: 2;
-        border-style: ridge;
-        border-top: none;
-    }
-    .fieldgoal.right {
-        transform: skew(10deg, 5deg);
-        position: absolute;
-        bottom: 100px;
-        right: 10px;
-        border: 10px solid gold;
-        border-top: none;
-        width: 150px;
-        height: 150px;
-        z-index: 2;
-        border-style: ridge;
-        border-top: none;
-    }
-    .fieldgoal:after {
-        content: '';
-        position: absolute;
-        background: gold;
-        left: 50%;
-        margin-left: -5px;
-        bottom: -70px;
-        width: 10px;
-        height: 60px;
-    }
-    .ball {
-        position: absolute;
-        top: 400px;
-        left: 0px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 80px;
-        border-left-color: #70501A;
-        border-right-color: #7F6216;
-        border-radius: 0 80%;
-        -webkit-animation: kick 10s ease infinite;
-    }
-    @-webkit-keyframes kick {
-        0% {
-            margin-right: -600px;
-            -webkit-transform: scale(0.1);
-            -webkit-transform: rotate(-360deg) scale(0.3);
-            z-index: 3;
-        }
-        50% {
-            left: 100%;
-            -webkit-transform: scale(0.1);
-            z-index: 1;
-            -webkit-transform: rotate(0deg) scale(0.3);
-            top: 0px;
-        }
-        100% {
-            left: -20%;
-            margin-right: -600px;
-            -webkit-transform: scale(0.1);
-            -webkit-transform: rotate(-360deg) scale(0.3);
-            z-index: 3;
-        }
-    }
-    .lace {
-        position: absolute;
-        width: 10px;
-        left: 0px;
-        top: -45px;
-        margin-left: 2.5px;
-        bottom: 20px;
-        height: 100px;
-        background: #FFF;
-        -webkit-transform: rotate(-45deg);
-    }
-    .lace:before {
-        content: '';
-        position: absolute;
-        left: -10px;
-        top: 25px;
-        width: 30px;
-        height: 10px;
-        background: #FFF;
-    }
-    .lace:after {
-        content: '';
-        position: absolute;
-        left: -10px;
-        bottom: 25px;
-        width: 30px;
-        height: 10px;
-        background: #FFF;
-    }
+
 }
 
 .scoreboard-conatiner {
@@ -279,6 +124,15 @@ nav {
     text-align: center;
     padding: 2px;
     cursor: pointer;
+}
+
+.card{
+    border-radius: 8px;
+}
+
+.card-header{
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
 .card-content.success {
