@@ -1,6 +1,6 @@
 if (Meteor.isClient) {
-    Router.onBeforeAction(function () {
-        if (!Meteor.user())
+    Router.onBeforeAction(function (action) {
+        if (!Meteor.user() && !action.url === '/scoreboard')
             this.render('home');
         else
             this.next();
