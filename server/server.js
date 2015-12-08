@@ -53,10 +53,13 @@
 
         Meteor.methods({
             addBowl: function(bowlEntry) {
-                Bowls.insert(bowlEntry)
+                Bowls.insert(bowlEntry);
             },
             deleteBowl: function(bowlName){
-                Bowls.remove( { "bowlName": bowlName })
+                Bowls.remove({ "bowlName": bowlName });
+            },
+            deleteChampionship: function(){
+                Champions.remove({'season':'2015'});
             },
             addWinner: function(name, season, winner){
                 var bowl = Bowls.findOne({ 'bowlName' : name, 'season' : ''+season });

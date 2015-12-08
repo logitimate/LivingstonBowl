@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2fca5b3-34ca-4973-917f-79bbb31bceae" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/championshipModal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/application.less" afterPath="$PROJECT_DIR$/client/css/application.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/js/admin/admin-events.js" afterPath="$PROJECT_DIR$/client/js/admin/admin-events.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/js/bowl-picks/bowl-picks-events.js" afterPath="$PROJECT_DIR$/client/js/bowl-picks/bowl-picks-events.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/js/bowl-picks/bowl-picks-helpers.js" afterPath="$PROJECT_DIR$/client/js/bowl-picks/bowl-picks-helpers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/js/picksByBowl/picksByBowl-helpers.js" afterPath="$PROJECT_DIR$/client/js/picksByBowl/picksByBowl-helpers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/js/scoreboard/scoreboard-helpers.js" afterPath="$PROJECT_DIR$/client/js/scoreboard/scoreboard-helpers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/js/view-user-picks/view-user-picks-helpers.js" afterPath="$PROJECT_DIR$/client/js/view-user-picks/view-user-picks-helpers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/admin.html" afterPath="$PROJECT_DIR$/client/templates/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/bowlPicks.html" afterPath="$PROJECT_DIR$/client/templates/bowlPicks.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/picksByBowl.html" afterPath="$PROJECT_DIR$/client/templates/picksByBowl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/viewUserPicks.html" afterPath="$PROJECT_DIR$/client/templates/viewUserPicks.html" />
-    </list>
+    <list default="true" id="a2fca5b3-34ca-4973-917f-79bbb31bceae" name="Default" comment="" />
     <ignored path="LivingstonBowl.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -307,7 +292,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="settings.editor.selected.configurable" value="lessc" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../EcomPublishingWeb" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="enabled" />
     <property name="js.meteor.project" value="true" />
@@ -815,12 +800,12 @@
       <updated>1448894258672</updated>
       <workItem from="1448894259751" duration="866000" />
       <workItem from="1448897030407" duration="15689000" />
-      <workItem from="1449515382144" duration="9684000" />
+      <workItem from="1449515382144" duration="12394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26239000" />
+    <option name="totallyTimeSpent" value="28949000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="0" />

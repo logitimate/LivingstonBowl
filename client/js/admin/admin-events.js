@@ -40,7 +40,11 @@ if (Meteor.isClient) {
         },
         'click .deleteBowl': function(e) {
             var bowlName = $(e.currentTarget).closest('.card').find('#name').text();
-            Meteor.call('deleteBowl', bowlName)
+            console.log('bowlName --> ', bowlName);
+            if(bowlName === 'Championship')
+                Meteor.call('deleteChampionship');
+            else
+                Meteor.call('deleteBowl', bowlName);
         },
         'click .team-pick': function(e) {
             $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected');
