@@ -68,10 +68,10 @@ if (Meteor.isClient) {
         'click #submitChampion' : function() {
             Champions.insert({
                 'season' : '2015',
-                'team1' : $('#team1').val(),
-                'team2' : $('#team2').val(),
-                'team3' : $('#team3').val(),
-                'team4' : $('#team4').val()
+                'team1' : $('#playoffTeam1').val(),
+                'team2' : $('#playoffTeam2').val(),
+                'team3' : $('#playoffTeam3').val(),
+                'team4' : $('#playoffTeam4').val()
             });
 
             $('#championshipModal').closeModal();
