@@ -38,8 +38,9 @@
              }, password, function(error) {
                  if (error) {
                      Meteor.myFunctions.newMessage(error.reason, "error", 5);
+                     $('#passwordLogin').val('');
                      console.log(error.reason);
-                 } else {
+                 } else {       
                     $('#loginModal').closeModal();
                      Router.go("bowlPicks");
                  }
