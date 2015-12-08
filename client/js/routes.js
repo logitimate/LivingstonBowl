@@ -1,4 +1,11 @@
 if (Meteor.isClient) {
+    Router.onBeforeAction(function () {
+        if (!Meteor.user())
+            this.render('home');
+        else
+            this.next();
+    })
+
     Router.route('/', function() {
         this.render('home');
     });
