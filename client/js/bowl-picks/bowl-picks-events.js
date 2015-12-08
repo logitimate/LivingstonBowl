@@ -47,8 +47,9 @@ if (Meteor.isClient) {
             });
 
             Meteor.call('savePick', {
+                'owner':Meteor.userId(),
                 'championship': true,
-                'season': '2015',
+                'season': 2015,
                 'name': 'championship',
                 'choice': $('#championshipPick').val(),
                 'winningScore': $('#winningScore').val(),
