@@ -32,6 +32,12 @@ if (Meteor.isClient) {
                 return 'green accent-3';
             else if (pick.status === 'lose')
                 return 'red darken-2';
+        },
+        playoffTeams: function(){
+            var champ = Champions.findOne({'season':'2015'});
+            var json = [champ.team1, champ.team2, champ.team3, champ.team4];
+            console.log('json --> ', json);
+            return json;
         }
     });
 }

@@ -53,4 +53,19 @@ if (Meteor.isClient) {
             Meteor.myFunctions.newMessage("Winners have been Submitted.", 'success', 3);
         }
     });
+
+    Template.championshipModal.events({
+        'click #submitChampion' : function() {
+            Champions.insert({
+                'season' : '2015',
+                'team1' : $('#team1').val(),
+                'team2' : $('#team2').val(),
+                'team3' : $('#team3').val(),
+                'team4' : $('#team4').val()
+            });
+
+            $('#championshipModal').closeModal();
+            Meteor.myFunctions.newMessage("Championship saved.", 'success', 3);
+        } 
+    });
 }

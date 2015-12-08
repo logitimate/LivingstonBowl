@@ -9,7 +9,7 @@
         </div>
         {{/if}} {{#each bowls}}
         <div class="col l6 s12 m12">
-            <div class="card card-small card-container" data-season="{{season}}">
+            <div class="card card-small card-container game-container" data-season="{{season}}">
                 <div class="row white-text {{isCorrect bowlName=bowlName season=season team=team1}}">
                     <div class="col s12 m12 l12">
                         <h4 id="name" class="inline left">{{bowlName}}</h4>
@@ -38,7 +38,7 @@
         </div>
         {{/each}}
         <div class="col s12 m12 l12">
-            <div class="card card-small card-container" data-season="{{season}}">
+            <div class="card card-small card-container champ-container" data-season="{{season}}">
                 <div class="row cyan darken-1 white-text">
                     <div class="col s12 m12 l12">
                         <h4 id="name" class="inline left">Champion</h4>
@@ -46,8 +46,9 @@
                 </div>
                 <div class="card-content">
                     <div class="row">
-                        <div class="col s12 m4 l4">
-                            <select name="championshipPick" id="championshipPick">
+                        <div class="input-field col s12 m4 l4">
+                            <select id="championshipPick">
+                                <option value="" disabled selected>Choose your option</option>
                                 {{#each playoffTeams}}
                                 <option value="{{.}}">{{.}}</option>
                                 {{/each}}
@@ -55,7 +56,7 @@
                         </div>
                         <div class="input-field col s6 m4 l4">
                             <input id="winningScore" type="text" class="validate">
-                            <label for="losingScore">Winning Score</label>
+                            <label for="winningScore">Winning Score</label>
                         </div>
                         <div class="input-field  col s6 m4 l4">
                             <input id="losingScore" type="text" class="validate">
@@ -73,4 +74,9 @@
         </div>
     </div>
     {{/unless}}
+    <script type="text/javascript">
+        $('document').ready(function(){
+            $('select').material_select();
+        });
+    </script>
 </template>
