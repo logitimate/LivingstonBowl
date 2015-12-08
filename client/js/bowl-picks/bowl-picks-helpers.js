@@ -37,6 +37,12 @@ if (Meteor.isClient) {
                 return '';
             else
                 return '';
+        },
+        playoffTeams: function(){
+            var champ = Champions.findOne({'season':'2015'});
+            var json = [champ.team1, champ.team2, champ.team3, champ.team4];
+            console.log('json --> ', json);
+            return json;
         }
     });
 }
