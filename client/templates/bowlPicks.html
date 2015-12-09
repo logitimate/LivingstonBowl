@@ -2,6 +2,16 @@
     {{>nav}}
     {{init}}
     <div class="row bowlContainer">
+        <div class="row  valign-wrapper">
+        <div class="col m12 s12 l7" id="winLossCount">
+                <h3>Record: {{winCount}} - {{lossCount}}</h3> 
+        </div>
+        {{#unless isLocked}}
+            <div class="col m12 s12 l5">
+                <a id="submitPicks" class="waves-effect waves-cyan btn-large btn-outline right valign">Submit Bowl Picks</a>
+            </div>
+        {{/unless}} 
+        </div>
         {{#if isLocked}}
         <div class="row">
             <div class="col l12">
@@ -56,10 +66,10 @@
         {{/each}} 
         {{#if championshipExists}}
         <div class="col s12 m12 l12">
-            <div class="card card-small card-container champ-container">
-                <div class="row white-text">
+            <div class="card card-small card-container champ-container" data-season="{{season}}">
+                <div class="row white-text {{isCorrect bowlName='championship' season=season}}">
                     <div class="col s12 m12 l12">
-                        <h4 id="name" class="inline left text-black">Championship {{isCorrect bowlName='championship' season=season}}</h4>
+                        <h4 id="name" class="inline left text-black">Championship</h4>
                     </div>
                 </div>
                 <div class="card-content">
@@ -86,13 +96,6 @@
         </div>
         {{/if}}
     </div>
-    {{#unless isLocked}}
-    <div class="row fixed">
-        <div class="col m12 s12 l12">
-            <a id="submitPicks" class="waves-effect waves-cyan btn-large btn-outline right">Submit</a>
-        </div>
-    </div>
-    {{/unless}}
     <script type="text/javascript">
     $('document').ready(function() {
         $('select').material_select();
