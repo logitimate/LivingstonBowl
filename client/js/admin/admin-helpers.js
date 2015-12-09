@@ -23,6 +23,13 @@ if (Meteor.isClient) {
         },
         championshipExists: function(){
             return Champions.find({'season':'2015'}).fetch().length > 0;
+        },
+        champSelected: function(){
+            var champ = Champions.findOne({'season':'2015'});
+            if(champ.winner === undefined && params.hash.team === 'default')
+                return 'selected';
+
+            return champ.winner === params.hash.team ? 'selected' : '';
         }
     });
 }
