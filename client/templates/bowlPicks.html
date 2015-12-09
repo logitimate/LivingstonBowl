@@ -1,6 +1,16 @@
 <template name="bowlPicks">
     {{>nav}}
     <div class="row bowlContainer">
+        <div class="row  valign-wrapper">
+        <div class="col m12 s12 l7" id="winLossCount">
+                <h3>Record: {{winCount}} - {{lossCount}}</h3> 
+        </div>
+        {{#unless isLocked}}
+            <div class="col m12 s12 l5">
+                <a id="submitPicks" class="waves-effect waves-cyan btn-large btn-outline right valign">Submit Bowl Picks</a>
+            </div>
+        {{/unless}} 
+        </div>
         {{#if isLocked}}
         <div class="row">
             <div class="col l12">
@@ -84,13 +94,6 @@
         </div>
         {{/if}}
     </div>
-    {{#unless isLocked}}
-    <div class="row fixed">
-        <div class="col m12 s12 l12">
-            <a id="submitPicks" class="waves-effect waves-cyan btn-large btn-outline right">Submit</a>
-        </div>
-    </div>
-    {{/unless}}
     <script type="text/javascript">
     $('document').ready(function() {
         $('select').material_select();

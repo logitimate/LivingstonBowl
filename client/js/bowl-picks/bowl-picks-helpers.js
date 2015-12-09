@@ -1,7 +1,7 @@
 if (Meteor.isClient) {
     Template.bowlPicks.helpers({
         bowls: function() {
-            return _.sortBy(Bowls.find({}).fetch(), function(bowl){
+            return _.sortBy(Bowls.find({}).fetch(), function(bowl) {
                 return new Date(bowl.date);
             });
         },
@@ -17,37 +17,61 @@ if (Meteor.isClient) {
             return firstBowlDate.isBefore(today) || firstBowlDate === today;
         },
         isPicked: function(params) {
-            var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
-            if(pick.choice === params.hash.team)
+            var pick = Picks.findOne({
+                'name': params.hash.bowlName,
+                'season': Number(params.hash.season),
+                'owner': Meteor.userId()
+            });
+            if (pick.choice === params.hash.team)
                 return 'selected';
             else
                 return '';
         },
-        isCorrect: function(params){
-            var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
+        isCorrect: function(params) {
+            var pick = Picks.findOne({
+                'name': params.hash.bowlName,
+                'season': Number(params.hash.season),
+                'owner': Meteor.userId()
+            });
             console.log(pick);
-            if(!pick || !pick.status)
+            if (!pick || !pick.status)
                 return 'cyan darken-1';
-            else if(pick.status === 'win')
+            else if (pick.status === 'win')
                 return 'green accent-3';
             else if (pick.status === 'lose')
                 return 'red darken-2';
         },
-        playoffTeams: function(){
-            var champ = Champions.findOne({'season':'2015'});
+        playoffTeams: function() {
+            var champ = Champions.findOne({
+                'season': '2015'
+            });
             var json = [champ.team1, champ.team2, champ.team3, champ.team4];
             console.log('json --> ', json);
             return json;
         },
-        championshipExists: function(){
-            return Champions.find({'season':'2015'}).fetch().length > 0;
+        championshipExists: function() {
+            return Champions.find({
+                'season': '2015'
+            }).fetch().length > 0;
         },
-        selected: function(params){
-            var champPick = Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
-            if(champPick === undefined && params.hash.team === 'default')
+        selected: function(params) {
+            var champPick = Picks.findOne({
+                'season': 2015,
+                'owner': Meteor.userId(),
+                'championship': true
+            });
+            if (champPick === undefined && params.hash.team === 'default')
                 return 'selected';
 
             return champPick.choice === params.hash.team ? 'selected' : '';
-        }
+        },
+        winCount: function() {
+            return Picks.find({'owner': Meteor.userId(),'status':'win'}).count()
+        },
+        lossCount: function() {
+            return Picks.find({'owner': Meteor.userId(),'status':'lose'}).count()
+        },
     });
+
+
 }
