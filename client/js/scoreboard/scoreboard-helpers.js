@@ -24,7 +24,6 @@ if (Meteor.isClient) {
     
                 var champPick = Picks.findOne({'owner': value._id, 'season': 2015, 'championship' : true});
                 if(champ && champPick && champ.winner == champPick.choice) {
-                    console.log('true');
                     wins = wins + 1;
                 }
 

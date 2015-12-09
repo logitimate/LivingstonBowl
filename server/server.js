@@ -79,6 +79,9 @@
             },
             updatePick: function(pick) {
                 Picks.update({'_id':pick._id}, pick);
+            },
+            isAdmin: function(userid) {
+                return _.contains(Meteor.users.findOne({'_id':userid}).roles, 'admin');
             }
         })
     };

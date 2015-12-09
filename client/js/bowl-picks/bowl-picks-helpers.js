@@ -1,4 +1,6 @@
 if (Meteor.isClient) {
+    var champPick = undefined;
+
     Template.bowlPicks.helpers({
         bowls: function() {
             return _.sortBy(Bowls.find({}).fetch(), function(bowl) {
@@ -27,14 +29,9 @@ if (Meteor.isClient) {
             else
                 return '';
         },
-        isCorrect: function(params) {
-            var pick = Picks.findOne({
-                'name': params.hash.bowlName,
-                'season': Number(params.hash.season),
-                'owner': Meteor.userId()
-            });
-            console.log(pick);
-            if (!pick || !pick.status)
+        isCorrect: function(params){
+            var pick = Picks.findOne({'name': params.hash.bowlName, 'season': Number(params.hash.season), 'owner': Meteor.userId()});
+            if(!pick || !pick.status)
                 return 'cyan darken-1';
             else if (pick.status === 'win')
                 return 'green accent-3';
@@ -46,7 +43,6 @@ if (Meteor.isClient) {
                 'season': '2015'
             });
             var json = [champ.team1, champ.team2, champ.team3, champ.team4];
-            console.log('json --> ', json);
             return json;
         },
         championshipExists: function() {
@@ -54,13 +50,12 @@ if (Meteor.isClient) {
                 'season': '2015'
             }).fetch().length > 0;
         },
-        selected: function(params) {
-            var champPick = Picks.findOne({
-                'season': 2015,
-                'owner': Meteor.userId(),
-                'championship': true
-            });
-            if (champPick === undefined && params.hash.team === 'default')
+        championshipData: function(){
+            return Picks.findOne({'owner':Meteor.userId(), 'season':2015, 'championship':true});
+        },
+        selected: function(params){
+            champPick = Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
+            if(champPick === undefined && params.hash.team === 'default')
                 return 'selected';
 
             return champPick.choice === params.hash.team ? 'selected' : '';
@@ -71,6 +66,15 @@ if (Meteor.isClient) {
         lossCount: function() {
             return Picks.find({'owner': Meteor.userId(),'status':'lose'}).count()
         },
+        pickScores: function(params) {
+            if(champPick === undefined)
+                return '';
+
+            return params.hash.team === 'winning' ? champPick.winningScore : champPick.losingScore;
+        },
+        isActive: function() {
+            return champPick === undefined ? '' : 'active';            
+        }
     });
 
 
