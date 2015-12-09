@@ -1,19 +1,40 @@
 @mainColor: #00acc1;
-
-.toast{
-    background-color:#00838f;
-    color:#FFF;
+.home-container {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-image: url('hero-image2.jpg');
+    color: white;
+    header {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        position: absolute;
+    }
 }
 
-.push-down{
-    margin-top:10px;
+.toast {
+    background-color: #00838f;
+    color: #FFF;
 }
 
-.push-up{
-    margin-bottom:10px;
+.push-down {
+    margin-top: 10px;
 }
 
-.home-container, .modal,.card-content {
+.push-up {
+    margin-bottom: 10px;
+}
+
+.home-container,
+.modal,
+.card-content {
+    color:#000;
     /* label color */
     .input-field label {
         color: #000;
@@ -41,27 +62,25 @@
     .input-field .prefix.active {
         color: #000;
     }
-
 }
 
 .scoreboard-conatiner {
     .score-container {
         cursor: pointer;
-        border:1px solid @mainColor;
+        border: 1px solid @mainColor;
         width: 100%;
         background-color: transparent;
         border-radius: 10px;
         height: 75px;
-        transition:0.25s;
-        &:hover{
-            background-color:@mainColor;
+        transition: 0.25s;
+        &:hover {
+            background-color: @mainColor;
         }
         .wins-container {
             color: #FFF;
-            padding:15px 0;
-
+            padding: 15px 0;
             span {
-                font-size:28px;
+                font-size: 28px;
                 font-weight: bold;
                 margin-right: 10px;
             }
@@ -77,9 +96,9 @@
             }
         }
         .name-container {
-            height:100%;
-            h5{
-                font-size:1.34em;
+            height: 100%;
+            h5 {
+                font-size: 1.34em;
             }
             color: #FFF;
         }
@@ -147,12 +166,12 @@ nav {
 
 .card-content.picked {
     background-color: #ABABAB;
-    color: #FFF;   
+    color: #FFF;
 }
 
 body {
     background: #232526;
-   }
+}
 
 .btn-outline {
     background-color: #232526;
@@ -172,10 +191,13 @@ body {
 .btn-row {
     margin-top: 15%;
     width: 100%;
-    z-index:10;
+    z-index: 10;
+    position: absolute;
+    bottom:50%;
     .btn-outline {
+        height:100%;
         margin-right: 20%;
-        margin-bottom:10px;
+        margin-bottom: 10px;
         width: 100%;
     }
 }
@@ -248,8 +270,8 @@ body {
     }
 }
 
-.icon-container{
-  position: absolute;
+.icon-container {
+    position: absolute;
     top: 0px;
     left: -25px;
     border-radius: 10px 0 0px 10px;
@@ -257,5 +279,5 @@ body {
     font-size: 20px;
     padding: 5px;
     height: 100%;
-    vertical-align: middle;  
+    vertical-align: middle;
 }

@@ -1,22 +1,19 @@
 <template name="home">
     {{>nav}}
-    <div class="container center home-container">
-        <div class="row hide-on-small-only">
-            <div class="col-lg-12">
-                <img src="">
+    <div class="center home-container">
+        <header>
+            <div class="btn-row row">
+                <div class="col l4 m4 s12">
+                    <a href="/scoreboard"><button class="btn-large btn-outline"> Scoreboard</button></a>
+                </div>
+                <div class="col l4 m4 s12">
+                    <button class="btn-large btn-outline modal-trigger" data-target="signUpModal">Sign Up</button>
+                </div>
+                <div class="col l4 m4 s12">
+                    <button class="btn-large btn-outline modal-trigger" data-target="loginModal">Login</button>
+                </div>
             </div>
-        </div>
-        <div class="btn-row row">
-            <div class="col l4 m4 s12">
-                <a class="btn-large btn-outline" href="/scoreboard"> Scoreboard</a>
-            </div>
-            <div class="col l4 m4 s12">
-                <button class="btn-large btn-outline modal-trigger" data-target="signUpModal">Sign Up</button>
-            </div>
-            <div class="col l4 m4 s12">
-                <button class="btn-large btn-outline modal-trigger" data-target="loginModal">Login</button>
-            </div>
-        </div>
-        {{>signUpModal}} {{>loginModal}}
+            {{>signUpModal}} {{>loginModal}}
+        </header>
     </div>
 </template>

@@ -20,6 +20,9 @@ if (Meteor.isClient) {
             var champ = Champions.findOne({'season':'2015'});
             var json = [champ.team1, champ.team2, champ.team3, champ.team4];
             return json;
+        },
+        championshipExists: function(){
+            return Champions.find({'season':'2015'}).fetch().length > 0;
         }
     });
 }
