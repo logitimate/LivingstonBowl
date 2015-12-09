@@ -82,6 +82,11 @@
             },
             isAdmin: function(userid) {
                 return _.contains(Meteor.users.findOne({'_id':userid}).roles, 'admin');
+            },
+            upsertChampion: function(champion) {
+                var champ = Champions.find({'season':'2015'});
+                if(champ != undefined)
+                    Champions.upsert({'_id':champ._id}, {$set : champion});
             }
         })
     };
