@@ -47,7 +47,7 @@
         </div>
         {{#each bowls}}
         <div class="col s12 m6 l6">
-            <div class="card card-small card-container" data-season="{{season}}">
+            <div class="card card-small card-container game-container" data-season="{{season}}">
                 <div class="deleteBowl">
                     <i class="fa fa-times"></i>
                 </div>
@@ -78,6 +78,35 @@
             </div>
         </div>
         {{/each}}
+        <div class="col s12 m12 l12">
+            <div class="card card-small card-container champ-container">
+                <div class="row cyan darken-1 white-text">
+                    <div class="col s12 m12 l12">
+                        <h4 id="name" class="inline left">Champion</h4>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="input-field col s12 m4 l4">
+                            <select id="championshipPick">
+                                <option value="" disabled selected>Choose your option</option>
+                                {{#each playoffTeams}}
+                                <option value="{{.}}">{{.}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="input-field col s6 m4 l4">
+                            <input id="winningScore" type="text" class="validate">
+                            <label for="winningScore">Winning Score</label>
+                        </div>
+                        <div class="input-field  col s6 m4 l4">
+                            <input id="losingScore" type="text" class="validate">
+                            <label for="losingScore">Losing Score</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{>championshipModal}}
     </div>
 </template>

@@ -47,10 +47,31 @@ if (Meteor.isClient) {
             $(e.currentTarget).addClass('selected');
         },
         'click #submitWinners': function(e) {
-            $.each($('.card-container'), function() {
+
+            $.each($('.game-container'), function() {
                 Meteor.call('addWinner', $(this).find('#name').text(), $(this).data('season'), $(this).find('.selected').find('.team').text());
             });
+            var champ = Champions.findOne({'season':'2015'});
+            champ['winner'] = $('#championshipPick').val();
+            champ['winningScore'] = $('#winningScore').val(); 
+            champ['losingScore'] = $('#losingScore').val(); 
+            Champions.update({'_id':champ._id}, champ);
             Meteor.myFunctions.newMessage("Winners have been Submitted.", 'success', 3);
         }
+    });
+
+    Template.championshipModal.events({
+        'click #submitChampion' : function() {
+            Champions.insert({
+                'season' : '2015',
+                'team1' : $('#team1').val(),
+                'team2' : $('#team2').val(),
+                'team3' : $('#team3').val(),
+                'team4' : $('#team4').val()
+            });
+
+            $('#championshipModal').closeModal();
+            Meteor.myFunctions.newMessage("Championship saved.", 'success', 3);
+        } 
     });
 }

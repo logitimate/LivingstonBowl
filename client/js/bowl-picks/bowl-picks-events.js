@@ -9,13 +9,16 @@ if (Meteor.isClient) {
             $(e.currentTarget).addClass('selected');
         },
         'click #submitPicks': function(e) {
-            if ($('.card-container').find('.selected').length < $('.card-container').length) {
-                console.log('true');
+            if ($('.game-container').find('.selected').length < $('.game-container').length) {
                 Meteor.myFunctions.newMessage('You must select all the winners before submitting.', 'error', 5);
                 return false;
             }
+            if(!$('#championshipPick').val() || !$('#winningScore').val() || !$('#losingScore').val()) {
+                Meteor.myFunctions.newMessage('You must select a champ before submitting.', 'error', 5);
+                return false;
+            }
 
-            $.each($('.card-container'), function() {
+            $.each($('.game-container'), function() {
                 var name = $(this).find('#name').text();
                 var season = $(this).data('season');
                 var choice = $(this).find('.selected').find('#pickText').text();
@@ -43,7 +46,25 @@ if (Meteor.isClient) {
                 });
             });
 
+            Meteor.call('savePick', {
+                'owner':Meteor.userId(),
+                'championship': true,
+                'season': 2015,
+                'name': 'championship',
+                'choice': $('#championshipPick').val(),
+                'winningScore': $('#winningScore').val(),
+                'losingScore': $('#losingScore').val()
+            })
+            clearTextFields();
+
+
             Meteor.myFunctions.newMessage('Picks were saved successfully.', 'success', 3);
         }
     });
 }
+
+var clearTextFields = function(){
+    $('#championshipPick').val('');
+    $('#winningScore').val('');
+    $('#losingScore').val('');
+};

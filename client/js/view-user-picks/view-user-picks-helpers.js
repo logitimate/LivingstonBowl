@@ -17,19 +17,11 @@
          isCorrect: function(params){
              var pick = Picks.findOne({'name': params.hash.name, 'season': Number(params.hash.season), 'owner': params.hash.owner});
              if(!pick || !pick.status)
-                 return '';
-             else if(pick.status === 'win' && pick.choice === params.hash.team)
-                 return '<div class="icon-container green accent-3 valign-wrapper"><i class="fa fa-check valign"></i></div>';
-             else if(pick.status === 'win' && pick.choice != params.hash.team)
-                 return '';
-             else if (pick.status === 'lose' && pick.choice === params.hash.team)
-                 return '<div class="icon-container red darken-2 valign-wrapper"><i class="fa fa-times valign"></i></div>';
-             else if(pick.status === 'lose' && pick.choice != params.hash.team)
-                 return '';
-             else
-                 return '';
+                return 'cyan darken-1';
+            else if(pick.status === 'win')
+                return 'green accent-4';
+            else if (pick.status === 'lose')
+                return 'red darken-2';
          }
      })
  }
-
-
