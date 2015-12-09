@@ -19,7 +19,18 @@ if (Meteor.isClient) {
     });
 
     Router.route('/admin', function() {
+        // var isAdmin = undefined;
+        // Meteor.call('isAdmin', Meteor.userId(), function(error, result) {
+            // console.log('result --> ', result);
+            // if(error) {
+                // Meteor.myFunctions.newMessage('You are unauthorized to access this page.', "error", 5);
+            // }
+            // else {
+                // isAdmin = result;
+                // this.render('admin');
+            // }
         this.render('admin');
+        // });
     });
 
     Router.route('/picksByBowl', function() {

@@ -24,7 +24,7 @@ if (Meteor.isClient) {
         championshipExists: function(){
             return Champions.find({'season':'2015'}).fetch().length > 0;
         },
-        champSelected: function(){
+        champSelected: function(params){
             var champ = Champions.findOne({'season':'2015'});
             if(champ.winner === undefined && params.hash.team === 'default')
                 return 'selected';
