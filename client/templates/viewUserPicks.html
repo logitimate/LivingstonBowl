@@ -1,6 +1,7 @@
 <template name="viewUserPicks">
     {{>nav}}
     <div class="row bowlContainer">
+        {{loadData id=id}}
         {{#each bowls}}
         <div class="col l4 m12 s12">
             <div class="card card-small card-container" data-season="{{season}}">
@@ -51,12 +52,12 @@
                             </select>
                         </div>
                         <div class="input-field col s6 m4 l4">
-                            <input id="winningScore" type="text" class="validate">
-                            <label for="winningScore">Winning Score</label>
+                            <input id="winningScore" type="text" class="validate" value="{{champPickScores score='winning'}}">
+                            <label for="winningScore" class={{isActive}}>Winning Score</label>
                         </div>
                         <div class="input-field  col s6 m4 l4">
-                            <input id="losingScore" type="text" class="validate">
-                            <label for="losingScore">Losing Score</label>
+                            <input id="losingScore" type="text" class="validate" value="{{champPickScores score='losing'}}">
+                            <label for="losingScore" class={{isActive}}>Losing Score</label>
                         </div>
                     </div>
                 </div>

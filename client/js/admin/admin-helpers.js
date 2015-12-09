@@ -1,5 +1,10 @@
 if (Meteor.isClient) {
+    var champ = undefined;
+
     Template.admin.helpers({
+        init: function() {
+            champ = Champions.findOne({'season':'2015'});
+        },
         bowls: function() {
             return _.sortBy(Bowls.find({}).fetch(), function(bowl){
                 return new Date(bowl.date);
@@ -22,7 +27,7 @@ if (Meteor.isClient) {
             return json;
         },
         championshipExists: function(){
-            return Champions.find({'season':'2015'}).fetch().length > 0;
+            return champ != undefined;
         },
         champSelected: function(params){
             var champ = Champions.findOne({'season':'2015'});
@@ -30,6 +35,15 @@ if (Meteor.isClient) {
                 return 'selected';
 
             return champ.winner === params.hash.team ? 'selected' : '';
+        },
+        champScores: function(params) {
+            if(champ === undefined)
+                return '';
+
+            return params.hash.score === 'winning' ? champ.winningScore : champ.losingScore;
+        },
+        isActive: function() {
+            return champ === undefined ? '' : 'active';            
         }
     });
 }
