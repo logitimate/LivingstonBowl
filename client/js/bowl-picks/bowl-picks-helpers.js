@@ -42,6 +42,9 @@ if (Meteor.isClient) {
         championshipExists: function(){
             return Champions.find({'season':'2015'}).fetch().length > 0;
         },
+        championshipData: function(){
+            return Picks.findOne({'owner':Meteor.userId(), 'season':2015, 'championship':true});
+        },
         selected: function(params){
             var champPick = Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
             if(champPick === undefined && params.hash.team === 'default')
