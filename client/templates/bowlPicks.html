@@ -8,7 +8,7 @@
         </div>
         {{#unless isLocked}}
             <div class="col m12 s12 l5">
-                <a id="submitPicks" class="waves-effect waves-cyan btn-large btn-outline right valign">Submit Bowl Picks</a>
+                <a class="waves-effect waves-cyan btn-large btn-outline right valign submitPicks">Submit Bowl Picks</a>
             </div>
         {{/unless}} 
         </div>
@@ -95,6 +95,11 @@
             </div>
         </div>
         {{/if}}
+         {{#unless isLocked}}
+            <div class="col m12 s12 l12">
+                <a class="waves-effect waves-cyan btn-large btn-outline right valign submitPicks">Submit Bowl Picks</a>
+            </div>
+        {{/unless}} 
     </div>
     <script type="text/javascript">
     $('document').ready(function() {

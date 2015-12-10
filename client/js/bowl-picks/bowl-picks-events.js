@@ -8,7 +8,7 @@ if (Meteor.isClient) {
             $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected');
             $(e.currentTarget).addClass('selected');
         },
-        'click #submitPicks': function(e) {
+        'click .submitPicks': function(e) {
             if ($('.game-container').find('.selected').length < $('.game-container').length) {
                 Meteor.myFunctions.newMessage('You must select all the winners before submitting.', 'error', 5);
                 return false;
