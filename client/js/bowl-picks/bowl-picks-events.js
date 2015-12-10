@@ -21,9 +21,9 @@ if (Meteor.isClient) {
             $.each($('.game-container'), function() {
                 var name = $(this).find('#name').text();
                 var season = $(this).data('season');
-                var choice = $(this).find('.selected').find('#pickText').text();
+                var choice = $(this).find('.selected').find('.pickText').text();
                 if(!choice)
-                    choice = $(this).find('.success').find('#pickText').text() != undefined ? $(this).find('.success').find('#pickText').text() : $(this).find('.fail').find('#pickText').text();
+                    choice = $(this).find('.success').find('.pickText').text() != undefined ? $(this).find('.success').find('.pickText').text() : $(this).find('.fail').find('.pickText').text();
                 var pick = undefined;
                 Meteor.call('getPick', name, season, Meteor.userId(), function(error, result){
                     if(error) {
