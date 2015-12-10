@@ -16,16 +16,11 @@ if (Meteor.isClient) {
                 }).fetch();
 
                 var wins = _.reduce(picks, function(count, pick) {
-                    if (pick['status'] === undefined || pick['status'] === 'lose')
+                    if (pick.status === undefined || pick.status === 'lose')
                         return count;
                     else
                         return count + 1;
                 }, 0);
-    
-                var champPick = Picks.findOne({'owner': value._id, 'season': 2015, 'championship' : true});
-                if(champ != undefined && champPick != undefined && champ.winner === champPick.choice) {
-                    wins = wins + 1;
-                }
 
                 var differences = 0;
                 
