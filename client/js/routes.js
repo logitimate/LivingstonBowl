@@ -13,6 +13,8 @@ if (Meteor.isClient) {
             });
         } else if (!Meteor.userId() && action.url != '/scoreboard')
             this.render('home');
+        else if(Meteor.userId() != undefined && action.url === '/')
+            this.render('scoreboard');
         else
             this.next();
     });
