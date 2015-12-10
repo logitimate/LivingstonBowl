@@ -46,7 +46,7 @@ if (Meteor.isClient) {
                 });
             });
 
-            Meteor.call('savePick', {
+            var obj = {
                 'owner':Meteor.userId(),
                 'championship': true,
                 'season': 2015,
@@ -54,7 +54,13 @@ if (Meteor.isClient) {
                 'choice': $('#championshipPick').val(),
                 'winningScore': $('#winningScore').val(),
                 'losingScore': $('#losingScore').val()
-            })
+            };
+            var champ = Picks.findOne({'owner':Meteor.userId(), 'championship':true, 'season':2015});
+            if(champ != undefined) 
+                Picks.update({'_id':champ._id}, obj);
+            else
+                Picks.insert(obj);
+
             clearTextFields();
 
 
