@@ -46,8 +46,8 @@
         selected: function(params){
             if(champPick === undefined && params.hash.team === 'default')
                 return 'selected';
-
-            return champPick.choice === params.hash.team ? 'selected' : '';
+            else
+                return champPick.choice === params.hash.team ? 'selected' : '';
         },
         champPickScores: function(params) {
             if(champPick === undefined)

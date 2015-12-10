@@ -1,7 +1,7 @@
 <template name="viewUserPicks">
     {{>nav}}
+    {{loadData id=id}}
     <div class="row bowlContainer">
-        {{loadData id=id}}
         {{#each bowls}}
         <div class="col l4 m12 s12">
             <div class="card card-small card-container" data-season="{{season}}">
@@ -35,8 +35,8 @@
         {{/each}}
         {{#if championshipExists}}
         <div class="col s12 m12 l12">
-            <div class="card card-small card-container champ-container" data-season="{{season}}">
-                <div class="row cyan darken-1 white-text">
+            <div class="card card-small card-container champ-container">
+                <div class="row cyan darken-1 white-text {{isCorrect bowlName='championship' season='2015'}}">
                     <div class="col s12 m12 l12">
                         <h4 id="name" class="inline left">Championship</h4>
                     </div>
@@ -47,7 +47,7 @@
                             <select id="championshipPick">
                                 <option value="" disabled {{selected team='default' owner=../id}}>Choose your option</option>
                                 {{#each playoffTeams}}
-                                <option value="{{.}}" {{selected team=../../id}}>{{.}}</option>
+                                <option value="{{.}}" {{selected team=.}}>{{.}}</option>
                                 {{/each}}
                             </select>
                         </div>
