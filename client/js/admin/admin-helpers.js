@@ -2,7 +2,7 @@ if (Meteor.isClient) {
     var champ = undefined;
 
     Template.admin.helpers({
-        init: function() {
+        loadData: function() {
             champ = Champions.findOne({'season':'2015'});
         },
         bowls: function() {

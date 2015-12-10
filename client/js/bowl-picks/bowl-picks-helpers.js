@@ -3,13 +3,12 @@ if (Meteor.isClient) {
     var champPick = undefined;
     var picks = undefined;
 
-    Template.bowlPicks.rendered(function(){
-        champ = Champions.findOne({'season':'2015'});
-        champPick = Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
-        picks = Picks.find({'owner':Meteor.userId(), 'season':2015}); 
-    });
-
     Template.bowlPicks.helpers({
+        loadData: function() {
+            champ = Champions.findOne({'season':'2015'});
+            champPick = Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
+            picks = Picks.find({'owner':Meteor.userId(), 'season':2015}); 
+        },
         bowls: function() {
             return _.sortBy(Bowls.find({}).fetch(), function(bowl) {
                 return new Date(bowl.date);
@@ -53,6 +52,7 @@ if (Meteor.isClient) {
                 return [champ.team1, champ.team2, champ.team3, champ.team4];
         },
         championshipExists: function(){
+            console.log('championship exists --> ', champ);
             return champ != undefined;
         },
         championshipData: function(){

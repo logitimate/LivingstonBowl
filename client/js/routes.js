@@ -1,10 +1,21 @@
 if (Meteor.isClient) {
     Router.onBeforeAction(function (action) {
-        if (!Meteor.user() && !action.url === '/scoreboard')
+        if(action.url === '/admin' ) {
+            var router = this;
+            Meteor.call('isAdmin', Meteor.userId(), function(error, result) {
+                if(error || !result) {
+                    router.render('bowlPicks');
+                    Meteor.myFunctions.newMessage('You are unauthorized to access this page.', "error", 5);
+                }
+                else {
+                    router.render('admin');
+                }
+            });
+        } else if (!Meteor.userId() && action.url != '/scoreboard')
             this.render('home');
         else
             this.next();
-    })
+    });
 
     Router.route('/', function() {
         this.render('home');
@@ -19,18 +30,8 @@ if (Meteor.isClient) {
     });
 
     Router.route('/admin', function() {
-        // var isAdmin = undefined;
-        // Meteor.call('isAdmin', Meteor.userId(), function(error, result) {
-            // console.log('result --> ', result);
-            // if(error) {
-                // Meteor.myFunctions.newMessage('You are unauthorized to access this page.', "error", 5);
-            // }
-            // else {
-                // isAdmin = result;
-                // this.render('admin');
-            // }
-        this.render('admin');
-        // });
+        var isAdmin = undefined;
+        
     });
 
     Router.route('/picksByBowl', function() {
