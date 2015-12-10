@@ -15,15 +15,12 @@ if (Meteor.isClient) {
             });
         },
         isLocked: function() {
-            var firstBowl = Bowls.find({}, {
-                sort: {
-                    date: 1
-                },
-                limit: 1
-            }).fetch();
-            var firstBowlDate = moment(firstBowl[0].date);
-            var today = moment(new Date());
-            return firstBowlDate.isBefore(today) || firstBowlDate === today;
+            var firstBowl = _.sortBy(Bowls.find({}).fetch(), function(bowl) {
+                return new Date(bowl.date);
+            })[0];
+            var firstBowlDate = moment(firstBowl.date);
+            var today = moment(new Date().toString());
+            return firstBowlDate.isBefore(today) || firstBowlDate.isSame(today);
         },
         isPicked: function(params) {
             var pick = Picks.findOne({
