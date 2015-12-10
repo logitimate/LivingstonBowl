@@ -27,6 +27,7 @@
             var pick = _.find(picks, function(pick){
                 return pick.name === params.hash.name;
             });
+            
             if(!pick || !pick.status)
                 return 'cyan darken-1';
             else if(pick.status === 'win')

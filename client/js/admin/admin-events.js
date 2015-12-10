@@ -60,9 +60,13 @@ if (Meteor.isClient) {
             champ['winningScore'] = $('#winningScore').val(); 
             champ['losingScore'] = $('#losingScore').val(); 
             Champions.update({'_id':champ._id}, champ);
-            var champPicks = Picks.find({'season':2015, 'choice':champ.winner}).fetch();
+            var champPicks = Picks.find({'season':2015, 'championship':true}).fetch();
             _.each(champPicks, function(pick, index) {
-                pick['status'] = 'win';
+                if(champ.winner === pick.choice)
+                    pick['status'] = 'win';
+                else 
+                    pick['status'] = 'lose';
+
                 Picks.update({'_id':pick._id}, pick);
             });
 
