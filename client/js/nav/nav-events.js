@@ -8,6 +8,7 @@ if (Meteor.isClient) {
             event.preventDefault();
             Meteor.logout();
             Router.go('/');
+            Meteor.myFunctions.newMessage("Logged out succesfully.", 'success', 3);
         }
     });
 }
