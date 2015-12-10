@@ -4,7 +4,7 @@ if (Meteor.isClient) {
     };
     
     Template.bowlPicks.events({
-        'click .team-pick': function(e) {
+        'click .pick': function(e) {
             $(e.currentTarget).closest('.card-content').find('.selected').removeClass('selected');
             $(e.currentTarget).addClass('selected');
         },
