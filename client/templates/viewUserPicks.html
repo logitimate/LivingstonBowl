@@ -10,7 +10,7 @@
             <div class="card card-small card-container" data-season="{{season}}">
                 <div class="row card-header white-text {{isCorrect name=bowlName season=season team=team1 owner=../id}}">
                     <div class="col s12 m12 l12">
-                        <h4 id="name" class="inline left">{{bowlName}}</h4>
+                        <h4 id="name" class="inline left truncate">{{bowlName}}</h4>
 
                         <p class="inline right">{{date}}</p>
                     </div>
@@ -20,14 +20,14 @@
                         <div class="col m6 s6 l6 center">
                             <div class="team-pick card">
                                 <div class="card-content {{isPicked name=bowlName season=season team=team1 owner=../id}}">
-                                    <h5 id="pickText">{{team1}}</h5>
+                                    <h5 id="pickText" class="truncate">{{team1}}</h5>
                                 </div>
                             </div>
                         </div>
                         <div class="col m6 s6 l6 center">
                             <div class="team-pick card">
                                 <div class="card-content  {{isPicked name=bowlName season=season team=team2 owner=../id}}">
-                                    <h5 id="pickText">{{team2}}</h5>
+                                    <h5 id="pickText" class="truncate">{{team2}}</h5>
                                 </div>
                             </div>
                         </div>

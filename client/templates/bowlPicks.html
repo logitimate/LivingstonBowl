@@ -23,7 +23,7 @@
             <div class="card card-small card-container game-container" data-season="{{season}}">
                 <div class="row card-header white-text {{isCorrect bowlName=bowlName season=season team=team1}}">
                     <div class="col s12 m12 l12">
-                        <h4 id="name" class="inline left">{{bowlName}}</h4>
+                        <h4 id="name" class="inline left truncate">{{bowlName}}</h4>
                         <p class="inline right">{{date}}</p>
                     </div>
                 </div>
@@ -33,13 +33,13 @@
                             {{#if isLocked}}
                             <div class="card">
                                 <div class="card-content {{isPicked bowlName=bowlName season=season team=team1}}">
-                                    <h5 class="pickText">{{team1}}</h5>
+                                    <h5 class="pickText truncate">{{team1}}</h5>
                                 </div>
                             </div>
                             {{else}}
                             <div class="team-pick card">
                                 <div class="card-content {{isPicked bowlName=bowlName season=season team=team1}}">
-                                    <h5 class="pickText">{{team1}}</h5>
+                                    <h5 class="pickText truncate">{{team1}}</h5>
                                 </div>
                             </div>
                             {{/if}}
@@ -48,13 +48,13 @@
                             {{#if isLocked}}
                             <div class="card">
                                 <div class="card-content {{isPicked bowlName=bowlName season=season team=team2}}">
-                                    <h5 class="pickText">{{team2}}</h5>
+                                    <h5 class="pickText truncate">{{team2}}</h5>
                                 </div>
                             </div>
                             {{else}}
                             <div class="team-pick card">
                                 <div class="card-content {{isPicked bowlName=bowlName season=season team=team2}}">
-                                    <h5 class="pickText">{{team2}}</h5>
+                                    <h5 class="pickText truncate">{{team2}}</h5>
                                 </div>
                             </div>
                             {{/if}}
