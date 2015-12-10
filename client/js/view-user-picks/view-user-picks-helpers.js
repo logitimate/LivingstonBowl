@@ -55,6 +55,12 @@
 
             return params.hash.score === 'winning' ? champPick.winningScore : champPick.losingScore;
         },
+        winCount: function(params) {
+            return Picks.find({'owner': params.hash.id,'status':'win'}).count()
+        },
+        lossCount: function(params) {
+            return Picks.find({'owner': params.hash.id,'status':'lose'}).count()
+        },
         isActive: function() {
             return champPick === undefined ? '' : 'active';            
         }
