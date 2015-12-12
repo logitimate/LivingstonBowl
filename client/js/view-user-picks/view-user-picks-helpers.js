@@ -1,20 +1,12 @@
  if (Meteor.isClient) {
-    var champ = undefined;
-    var champPick = undefined;
-    var picks = undefined;
-
      Template.viewUserPicks.helpers({
-        loadData: function(params) { 
-            champ = Champions.findOne({'season':'2015'});
-            champPick = Picks.findOne({'season':2015, 'championship':true, 'owner':params.hash.id});
-            picks = Picks.find({'season': 2015, 'owner':params.hash.id}).fetch();
-        },
         bowls: function() {
             return _.sortBy(Bowls.find({}).fetch(), function(bowl){
                 return new Date(bowl.date);
             });
         },
         isPicked: function(params) {
+            var picks = Picks.find({'season': 2015, 'owner':params.hash.owner}).fetch();
             var pick = _.find(picks, function(pick){return pick.name === params.hash.name;});
             if(!pick)
                 return '';
@@ -24,6 +16,7 @@
                  return '';
         },
         isCorrect: function(params){
+            var picks = Picks.find({'season': 2015, 'owner':params.hash.owner}).fetch();
             var pick = _.find(picks, function(pick){
                 return pick.name === params.hash.name;
             });
@@ -36,21 +29,25 @@
                 return 'red darken-2';
         },
         playoffTeams: function(){
+            var champ = Champions.findOne({'season':'2015'});
             if(champ === undefined)
                 return [];
             else
                 return [champ.team1, champ.team2, champ.team3, champ.team4];
         },
         championshipExists: function(){
+            var champ = Champions.findOne({'season':'2015'});
             return champ != undefined;
         },
         selected: function(params){
+            var champPick = Picks.findOne({'season':2015, 'championship':true, 'owner':params.hash.id});
             if(champPick === undefined && params.hash.team === 'default')
                 return 'selected';
             else
                 return champPick.choice === params.hash.team ? 'selected' : '';
         },
         champPickScores: function(params) {
+            var champPick = Picks.findOne({'season':2015, 'championship':true, 'owner':params.hash.id});
             if(champPick === undefined)
                 return '';
 
@@ -62,7 +59,8 @@
         lossCount: function(params) {
             return Picks.find({'owner': params.hash.id,'status':'lose'}).count()
         },
-        isActive: function() {
+        isActive: function(params) {
+            var champPick = Picks.findOne({'season':2015, 'championship':true, 'owner':params.hash.owner});
             return champPick === undefined ? '' : 'active';            
         }
      })

@@ -38,7 +38,7 @@ if (Meteor.isClient) {
 
                 users.push({
                     'id': value._id,
-                    'name': value.profile.name,
+                    'name': value.profile.name != undefined ? value.profile.name : '',
                     'wins': wins,
                     'differences' : differences
                 })
