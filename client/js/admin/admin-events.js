@@ -52,9 +52,10 @@ if (Meteor.isClient) {
         },
         'click #submitWinners': function(e) {
 
-            $.each($('.game-container'), function() {
+            $.each($('.selected').closest('.game-container'), function() {
                 Meteor.call('addWinner', $(this).find('#name').text(), $(this).data('season'), $(this).find('.selected').find('.team').text());
             });
+
             var champ = Champions.findOne({'season':'2015'});
             champ['winner'] = $('#championshipPick').val();
             champ['winningScore'] = $('#winningScore').val(); 
