@@ -34,6 +34,7 @@ if (Meteor.isClient) {
                 return 'red darken-2';
         },
         playoffTeams: function(){
+            var champ = Champions.findOne({'season':'2015'});
             if(champ === undefined)
                 return [];
             else
@@ -41,7 +42,6 @@ if (Meteor.isClient) {
         },
         championshipExists: function(){
             var champ = Champions.findOne({'season':'2015'});
-            console.log(champ);
             return champ != undefined;
         },
         championshipData: function(){

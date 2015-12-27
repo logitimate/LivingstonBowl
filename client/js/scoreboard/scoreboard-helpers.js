@@ -26,11 +26,18 @@ if (Meteor.isClient) {
                 
                 if(value._id != Meteor.userId()) {
                     var userPicks = Picks.find({
-                        'owner': Meteor.userId()
-                    }, {
-                        'season': '2015'
+                        'status' : {$exists: false},
+                        'owner': Meteor.userId(), 
+                        'season': 2015
                     }).fetch(); 
-                    var picksChoices = _.map(picks, function(value, index){ return value.choice });
+
+                    var picksLeft = Picks.find({
+                        'status' : {$exists: false},
+                        'owner': value._id, 
+                        'season': 2015
+                    }).fetch(); 
+
+                    var picksChoices = _.map(picksLeft, function(value, index){ return value.choice });
                     var userChoices = _.map(userPicks, function(value, index){ return value.choice});
 
                     differences = _.difference(picksChoices, userChoices).length;

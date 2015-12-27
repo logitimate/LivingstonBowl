@@ -1,6 +1,6 @@
 if (Meteor.isClient) {
 	Template.picksByBowl.events({
-		'click, tap .pick' : function(event){
+		'click .pick' : function(event){
 			console.log(event.currentTarget);
 			var element = $(event.currentTarget).closest('.pick');
 			var team = element.data('team');
