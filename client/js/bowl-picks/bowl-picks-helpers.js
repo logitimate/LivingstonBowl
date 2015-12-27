@@ -45,7 +45,7 @@ if (Meteor.isClient) {
             return champ != undefined;
         },
         championshipData: function(){
-            return Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});;
+            return Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
         },
         selected: function(params){
             var champPick = undefined;

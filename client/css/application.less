@@ -293,6 +293,16 @@ body {
     vertical-align: middle;
 }
 
+.picks-byBowl-container{
+    .pick{
+        cursor:pointer;
+        transition:0.24s;
+        &:hover{
+            background-color:lighten(@mainColor, 10%);
+        }
+    }
+}
+
 
 @media only screen and (min-width : 320px){
      .scoreboard-conatiner{
