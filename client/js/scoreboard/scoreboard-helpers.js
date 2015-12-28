@@ -10,17 +10,11 @@ if (Meteor.isClient) {
             var users = [];
             var champ = Champions.findOne({'season':'2015'});
             _.each(Meteor.users.find().fetch(), function(value, index) {
-                var picks = Picks.find({
+                var wins = Picks.find({
                     'owner': value._id,
-                    'season': 2015
-                }).fetch();
-
-                var wins = _.reduce(picks, function(count, pick) {
-                    if (pick.status === undefined || pick.status === 'lose')
-                        return count;
-                    else
-                        return count + 1;
-                }, 0);
+                    'season': 2015,
+                    'status': 'win'
+                }).count();
 
                 var differences = 0;
                 
