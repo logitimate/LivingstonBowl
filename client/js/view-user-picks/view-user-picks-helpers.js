@@ -40,8 +40,7 @@
             return champ != undefined;
         },
         champSelected: function(params) {
-            console.log('params --> ', params.hash);
-            var champPick = Picks.findOne({'season':2015, 'championship':true, 'owner':params.hash.id});
+            var champPick = Picks.findOne({'season':2015, 'championship':true, 'owner':params.hash.owner});
             if(champPick === undefined)
                 return params.hash.team === 'default' ? 'selected' : '';
             else 
