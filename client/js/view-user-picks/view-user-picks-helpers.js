@@ -28,23 +28,23 @@
             else if (pick.status === 'lose')
                 return 'red darken-2';
         },
-        playoffTeams: function(){
+        playoffTeams: function() {
             var champ = Champions.findOne({'season':'2015'});
             if(champ === undefined)
                 return [];
             else
                 return [champ.team1, champ.team2, champ.team3, champ.team4];
         },
-        championshipExists: function(){
+        championshipExists: function() {
             var champ = Champions.findOne({'season':'2015'});
             return champ != undefined;
         },
-        selected: function(params){
-            var champPick = Picks.findOne({'season':2015, 'championship':true, 'owner':params.hash.id});
-            if(champPick === undefined && params.hash.team === 'default')
-                return 'selected';
-            else
-                return champPick.choice === params.hash.team ? 'selected' : '';
+        champSelected: function(params) {
+            var champPick = Picks.findOne({'season':2015, 'championship':true, 'owner':params.hash.owner});
+            if(champPick === undefined)
+                return params.hash.team === 'default' ? 'selected' : '';
+            else 
+                return champPick.choice === params.hash.team ? 'selected' : ''; 
         },
         champPickScores: function(params) {
             var champPick = Picks.findOne({'season':2015, 'championship':true, 'owner':params.hash.id});
