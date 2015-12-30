@@ -48,18 +48,46 @@
                     </div>
                     <div class="card-content">
                         <div class="row">
-                        {{#each playoffTeams}}
                             <div class="col s6 m6 l3 center">
                                 <div class="card">
-                                    <div class="card-content pick {{isWinner team=team1 winner=winner}}" data-team="{{.}}" data-picks="{{picks team=team1 season=season name=bowlName}}">
-                                        <h5 class="truncate">{{.}}</h5>
+                                    <div class="card-content pick {{isWinner team=. winner=playoffTeams.winner}}" data-team="{{.}}" data-picks="{{picks team=team1 season=season name=bowlName}}">
+                                        <h5 class="truncate">{{playoffTeams.team1}}</h5>
                                         <h5>
-                                            {{counts team=team1 season=season name=bowlName}}
+                                            {{counts team=playoffTeams.team1 season=2015 name=championship}}
                                         </h5>
                                     </div>
                                 </div>
                             </div>
-                        {{/each}}
+                            <div class="col s6 m6 l3 center">
+                                <div class="card">
+                                    <div class="card-content pick {{isWinner team=. winner=playoffTeams.winner}}" data-team="{{.}}" data-picks="{{picks team=team1 season=season name=bowlName}}">
+                                        <h5 class="truncate">{{playoffTeams.team2}}</h5>
+                                        <h5>
+                                            {{counts team=playoffTeams.team1 season=2015 name=championship}}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s6 m6 l3 center">
+                                <div class="card">
+                                    <div class="card-content pick {{isWinner team=. winner=playoffTeams.winner}}" data-team="{{.}}" data-picks="{{picks team=team1 season=season name=bowlName}}">
+                                        <h5 class="truncate">{{playoffTeams.team3}}</h5>
+                                        <h5>
+                                            {{counts team=playoffTeams.team1 season=2015 name=championship}}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s6 m6 l3 center">
+                                <div class="card">
+                                    <div class="card-content pick {{isWinner team=. winner=playoffTeams.winner}}" data-team="{{.}}" data-picks="{{picks team=team1 season=season name=bowlName}}">
+                                        <h5 class="truncate">{{playoffTeams.team4}}</h5>
+                                        <h5>
+                                            {{counts team=playoffTeams.team1 season=2015 name=championship}}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

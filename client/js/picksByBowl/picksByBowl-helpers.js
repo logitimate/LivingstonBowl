@@ -46,7 +46,7 @@ if (Meteor.isClient) {
             if(champ === undefined)
                 return [];
             else
-                return [champ.team1, champ.team2, champ.team3, champ.team4];
+                return champ;
         },
     });
 
