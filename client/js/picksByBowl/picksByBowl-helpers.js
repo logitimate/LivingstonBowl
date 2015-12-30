@@ -40,7 +40,14 @@ if (Meteor.isClient) {
                 return '';
 
             return params.hash.team === params.hash.winner ? 'green accent-4 white-text' : 'red darken-2 white-text';
-        }
+        },
+        playoffTeams: function(){
+            var champ = Champions.findOne({'season':'2015'});
+            if(champ === undefined)
+                return [];
+            else
+                return [champ.team1, champ.team2, champ.team3, champ.team4];
+        },
     });
 
     Template.teamPicksModal.helpers({
