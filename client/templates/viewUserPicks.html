@@ -47,9 +47,9 @@
                     <div class="row">
                         <div class="input-field col s12 m4 l4">
                             <select id="championshipPick">
-                                <option value="" disabled {{selected team='default' owner=../id}}>Choose your option</option>
-                                {{#each playoffTeams}}
-                                <option value="{{.}}" {{selected team=.}}>{{.}}</option>
+                                <option value="" {{champSelected team="default" owner=../id}}>Choose an option</option>
+                                {{#each playoffTeam in playoffTeams}}
+                                    <option value="{{playoffTeam}}" {{champSelected team=playoffTeam owner=../id}}>{{playoffTeam}}</option>
                                 {{/each}}
                             </select>
                         </div>

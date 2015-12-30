@@ -76,8 +76,8 @@
                         <div class="input-field col s12 m12 l12">
                             <select id="championshipPick">
                                 <option value="" disabled {{selected team='default' }}>Choose your option</option>
-                                {{#each playoffTeams}}
-                                <option value="{{.}}" {{selected team=.}}>{{.}}</option>
+                                {{#each playoffTeam in playoffTeams}}
+                                <option value="{{playoffTeam}}" {{selected team=playoffTeam}}>{{playoffTeam}}</option>
                                 {{/each}}
                             </select>
                         </div>

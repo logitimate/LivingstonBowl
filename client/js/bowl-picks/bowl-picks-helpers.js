@@ -50,10 +50,10 @@ if (Meteor.isClient) {
         selected: function(params){
             var champPick = undefined;
             champPick = Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
-            if(champPick === undefined && params.hash.team === 'default')
-                return 'selected';
-
-            return champPick.choice === params.hash.team ? 'selected' : '';
+            if(champPick === undefined)
+                return params.hash.team === 'default' ? 'selected' : '';
+            else
+                return champPick.choice === params.hash.team ? 'selected' : '';
         },
         winCount: function() {
             return Picks.find({'owner': Meteor.userId(),'status':'win'}).count()
