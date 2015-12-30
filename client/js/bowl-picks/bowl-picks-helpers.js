@@ -19,6 +19,10 @@ if (Meteor.isClient) {
                 'season': Number(params.hash.season),
                 'owner': Meteor.userId()
             });
+            
+            if(pick === undefined)
+                return '';
+
             if (pick.choice === params.hash.team)
                 return 'selected';
             else
@@ -48,8 +52,7 @@ if (Meteor.isClient) {
             return Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
         },
         selected: function(params){
-            var champPick = undefined;
-            champPick = Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
+            var champPick = Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
             if(champPick === undefined)
                 return params.hash.team === 'default' ? 'selected' : '';
             else
@@ -62,6 +65,7 @@ if (Meteor.isClient) {
             return Picks.find({'owner': Meteor.userId(),'status':'lose'}).count()
         },
         pickScores: function(params) {
+            var champPick = Picks.findOne({'season':2015, 'owner':Meteor.userId(), 'championship':true});
             if(champPick === undefined)
                 return '';
 

@@ -15,11 +15,14 @@ if (Meteor.isClient) {
                 'name': params.hash.name,
                 'choice': params.hash.team
             }).fetch();
-            return JSON.stringify(_.map(picks, function(pick) {
+            var x = JSON.stringify(_.map(picks, function(pick) {
                 return Meteor.users.findOne({
                     '_id': pick.owner
                 }).profile.name;
             }));
+            console.log('team --> ', params.hash.team);
+            console.log('results --> ', x);
+            return x;
         },
         counts: function(params) {
             var picks = Picks.find({
