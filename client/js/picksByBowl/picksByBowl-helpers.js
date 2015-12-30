@@ -20,8 +20,6 @@ if (Meteor.isClient) {
                     '_id': pick.owner
                 }).profile.name;
             }));
-            console.log('team --> ', params.hash.team);
-            console.log('results --> ', x);
             return x;
         },
         counts: function(params) {
