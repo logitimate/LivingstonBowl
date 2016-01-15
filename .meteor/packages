@@ -6,7 +6,6 @@
 
 autopublish
 insecure
-iron:router
 materialize:materialize
 accounts-password
 alanning:roles
@@ -20,7 +19,6 @@ standard-minifiers
 meteor-base
 mobile-experience
 mongo
-blaze-html-templates
 session
 jquery
 tracker
@@ -30,3 +28,6 @@ random
 ejson
 spacebars
 check
+angular
+angularui:angular-ui-router
+netanelgilad:angular-server
